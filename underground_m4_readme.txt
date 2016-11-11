@@ -48,12 +48,13 @@ UI Components
 
 5) The credits for the game should be fully informative on all contributions.
 
-	- [TODO]
+	- Document all developers, their contributions and 3rd party content.
 
 
 6) The credits for the game should be visually compelling in some way.
 
-	- [TODO]
+	- It can vertical scroll.
+        - Some custom effects like individually animated text elements[TODO]
 
 
 Polish via Visual/Image Effects
