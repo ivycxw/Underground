@@ -2,6 +2,10 @@ Name: Hyun Seo Chung
 Email: hchung48@gatech.edu
 Prism Account Name: hchung48
 
+Name: Sangmin Lee
+Email: slee753@gatech.edu
+Prism Account Name: slee753
+
 Name: Hui Feng
 Email: fenghuibupt@gmail.com
 Prism Account Name: hfeng49
@@ -70,6 +74,7 @@ Polish via Visual/Image Effects
 - Depth of field
 - Lightning particle effects
 - Raining particle effects
+- Grayscale effects (Currently, it will be triggered by left shift key. Later, it will be used when our player died.)
 
 
 External Resources:
