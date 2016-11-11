@@ -1,0 +1,12 @@
+Design
+1.menu: The two fonts we chose is the same low poly style as the game world. The button simulated rocks. It helps to keep consistency in the game and creates a game play feel. 
+
+2.Polished visual effects: The two effects we applied to the game are lens flare and depth of field.
+
+Resources
+1.Menu font: Low poly Font. https://www.behance.net/gallery/6642303/Low-Poly-Font
+2.Text font: Neutraface Display Titling. https://www.fontyukle.net/en/Neutra+Display+Titling.ttf
+3.3D assets: 
+Low Poly Strategy Prototyper. https://www.assetstore.unity3d.com/en/#!/content/22817
+4.Music: Floating Trees by C418 <Minecraft-Volume Beta>
+
