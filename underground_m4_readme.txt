@@ -38,7 +38,7 @@ UI Components
 
 		ii. Create a custom button image for the clickable elements of your interface. Again, document your reasoning for the design.
 
-			- [TODO]
+			- The button simulated rocks,It helps to keep consistency in the game and creates a game play feel.
 
 
 4) Your menu system should be navigable with a controller or keyboard in addition to normal the mouse clicking.
