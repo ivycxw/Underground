@@ -18,7 +18,6 @@ Name: Zachary Peterson
 Email: zpeterson3@gatech.edu
 Prism Account Name: zpeterson3
 
-[FILL IN YOUR INFORMATION IN THE ABOVE FORM]
 
 
 Completed Requirements:
