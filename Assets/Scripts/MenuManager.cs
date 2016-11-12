@@ -16,6 +16,8 @@ public class MenuManager : MonoBehaviour
 
 	public RectTransform ScrollingCreditText;
 	public float CreditScrollRate;
+	public RectTransform ScrollingPhoto;
+	public float PhotoScrollRate;
 
 	public Button MainMenuPlayButton;
 	public Button MainMenuMusicButton;
@@ -27,11 +29,18 @@ public class MenuManager : MonoBehaviour
 	public Button PlayMenuBackButton;
 	public Button CreditsMenuBackButton;
 
+	public Texture[] teamMemberPhotos;
+
 	private Vector3 mCameraOffset;
 	private float mCurrentRotation;
 
 	private bool mCurrentlyScrolling;
 	private float mStartingCreditsHeight;
+
+	private bool mCurrentlyScrollingPhoto;
+	private float mStartingPhotoX;
+	private int currentPhotoIndex = 0;
+	private RawImage photoImage;
 
 	private enum EMenuState
 	{
@@ -47,6 +56,7 @@ public class MenuManager : MonoBehaviour
 	void Start ()
 	{
 		mStartingCreditsHeight = ScrollingCreditText.anchoredPosition.y;
+		mStartingPhotoX = ScrollingCreditText.anchoredPosition.x - ScrollingPhoto.rect.width;
 		mCameraOffset = Camera.transform.position - CameraTarget.position;
 		Camera.transform.rotation = Quaternion.LookRotation(-mCameraOffset);
 		mCurrentRotation = 0.0f;
@@ -57,8 +67,9 @@ public class MenuManager : MonoBehaviour
 		RoomMenu.GetComponent<Canvas>().enabled = false;
 		CreditsMenu.GetComponent<Canvas>().enabled = false;
 
-		MainMenuPlayButton.Select();
+		photoImage = ScrollingPhoto.GetComponent<RawImage> ();
 
+		MainMenuPlayButton.Select();
 	}
 
 	// Update is called once per frame
@@ -70,6 +81,17 @@ public class MenuManager : MonoBehaviour
 			if (ScrollingCreditText.anchoredPosition.y >= -mStartingCreditsHeight)
 			{
 				mCurrentlyScrolling = false;
+			}
+		}
+
+		if (mCurrentlyScrollingPhoto)
+		{
+			ScrollingPhoto.anchoredPosition += new Vector2 (PhotoScrollRate, 0) * Time.deltaTime;
+			if (ScrollingPhoto.anchoredPosition.x >= Screen.width)
+			{
+				ScrollingPhoto.anchoredPosition = new Vector2 (mStartingPhotoX, ScrollingPhoto.anchoredPosition.y);
+				currentPhotoIndex = ++currentPhotoIndex % teamMemberPhotos.Length;
+				photoImage.texture = teamMemberPhotos [currentPhotoIndex];
 			}
 		}
 
@@ -99,13 +121,18 @@ public class MenuManager : MonoBehaviour
 
 	public void StartScrollingCredits()
 	{
-		ScrollingCreditText.anchoredPosition = new Vector2(ScrollingCreditText.anchoredPosition.x, mStartingCreditsHeight);
+		ScrollingCreditText.anchoredPosition = new Vector2 (ScrollingCreditText.anchoredPosition.x, mStartingCreditsHeight);
 		mCurrentlyScrolling = true;
+
+		photoImage.texture = teamMemberPhotos [0];
+		ScrollingPhoto.anchoredPosition = new Vector2 (mStartingPhotoX, ScrollingPhoto.anchoredPosition.y);
+		mCurrentlyScrollingPhoto = true;
 	}
 
 	public void StopScrollingCredits()
 	{
 		mCurrentlyScrolling = false;
+		mCurrentlyScrollingPhoto = false;
 	}
 
 	public void FromMenuToCredits()
