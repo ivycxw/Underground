@@ -61,7 +61,7 @@ UI Components
 4) Your menu system should be navigable with a controller or keyboard in addition to normal the mouse clicking.
 
 	- It can be navigated with a keyboard with UP and DOWN, and ENTER can be used to choose the item.
-    - In the credits menu, ENTER can be used to return back the main menu.
+	- In the credits menu, ENTER can be used to return back the main menu.
 
 
 5) The credits for the game should be fully informative on all contributions.
@@ -72,7 +72,7 @@ UI Components
 6) The credits for the game should be visually compelling in some way.
 
 	- Vertical scroll.
-    - Team member photos sliding in and out (horizontally) in the background (one photo at a time).
+	- Team member photos sliding in and out (horizontally) in the background (one photo at a time).
 
 
 Polish via Visual/Image Effects
