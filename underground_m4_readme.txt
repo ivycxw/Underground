@@ -1,3 +1,5 @@
+Underground
+
 Name: Hyun Seo Chung
 Email: hchung48@gatech.edu
 Prism Account Name: hchung48
@@ -22,7 +24,7 @@ Prism Account Name: zpeterson3
 
 Completed Requirements:
 
-0) The team name appears on the HUD of the game when it is running.
+0) The team name (Team Underground) appears on the HUD of the game when it is running.
 
 
 UI Components
@@ -34,7 +36,7 @@ UI Components
 
 2) The background environment should be visually appealing and animated in some fashion. This doesn’t have to be overly complex just something more entertaining than a static color or static image
 
-	- Background shows a level in the game with the camera slowly rotating.
+	- Background shows a level in the game with the camera rotating.
 
 
 3) The menu items should be aesthetically positioned and styled
@@ -58,19 +60,19 @@ UI Components
 
 4) Your menu system should be navigable with a controller or keyboard in addition to normal the mouse clicking.
 
-	- It can be navigable with a keyboard with UP and DOWN, and ENTER can be used to choose the item.
-        - In the credits menu, ENTER can be used to return back the main menu.
+	- It can be navigated with a keyboard with UP and DOWN, and ENTER can be used to choose the item.
+    - In the credits menu, ENTER can be used to return back the main menu.
 
 
 5) The credits for the game should be fully informative on all contributions.
 
-	- Document all developers, their contributions and 3rd party content.
+	- Lists all developers, their contributions and 3rd party content.
 
 
 6) The credits for the game should be visually compelling in some way.
 
-	- It can vertical scroll.
-        - Some custom effects like individually animated text elements[TODO]
+	- Vertical scroll.
+    - Team member photos sliding in and out (horizontally) in the background (one photo at a time).
 
 
 Polish via Visual/Image Effects
@@ -93,7 +95,7 @@ External Resources:
 Special Installation Instruction:
 
 - No special installation required (can be opened either by the executable or by directly importing and playing the game on Unity Editor).
-- Developed and built on [Mac/Windows].
+- Developed on both Mac and Windows, and built on Mac.
 
 
 Steps to Check:
@@ -103,7 +105,7 @@ Steps to Check:
 - Use ENTER to choose PLAY, and you can use keyboard to navigate the room list.
 - Mouse click the BACK at the left-bottom corner and go back to the main menu.
 - Choose CREDITS by clicking DOWN twice and click ENTER.
-- You can see the scrolling credits. Click ENTER in order to go back the main menu.
+- You can see the scrolling credits along with a scrolling photo of team members. Click ENTER in order to go back the main menu.
 
 
 Main Scene File: Combined
