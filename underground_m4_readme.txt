@@ -95,7 +95,12 @@ Special Installation Instruction:
 
 Steps to Check:
 
-- [TODO]
+- Maximize the Game screen and start to play.
+- Use UP and DOWN in the keyboard or mouse to navigate the main menu. 
+- Use ENTER to choose PLAY, and you can use keyboard to navigate the room list.
+- Mouse click the BACK at the left-bottom corner and go back to the main menu.
+- Choose CREDITS by clicking DOWN twice and click ENTER.
+- You can see the scrolling credits. Click ENTER in order to go back the main menu.
 
 
 Main Scene File: Combined
