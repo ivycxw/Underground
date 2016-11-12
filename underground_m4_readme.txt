@@ -11,7 +11,8 @@ Email: fenghuibupt@gmail.com
 Prism Account Name: hfeng49
 
 Name: Xiaowei Chen
-Email: cxwzju@gmail.com
+Email: xchen489@gatech.edu
+Prism Account Name: xchen489
 
 [FILL IN YOUR INFORMATION IN THE ABOVE FORM]
 
