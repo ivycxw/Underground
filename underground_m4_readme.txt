@@ -11,9 +11,13 @@ Email: fenghuibupt@gmail.com
 Prism Account Name: hfeng49
 
 Name: Xiaowei Chen
-Email: cxwzju@gmail.com
+Email: xchen489@gatech.edu
+Prism Account Name: xchen489
 
-[FILL IN YOUR INFORMATION IN THE ABOVE FORM]
+Name: Zachary Peterson
+Email: zpeterson3@gatech.edu
+Prism Account Name: zpeterson3
+
 
 
 Completed Requirements:
@@ -94,7 +98,12 @@ Special Installation Instruction:
 
 Steps to Check:
 
-- [TODO]
+- Maximize the Game screen and start to play.
+- Use UP and DOWN in the keyboard or mouse to navigate the main menu. 
+- Use ENTER to choose PLAY, and you can use keyboard to navigate the room list.
+- Mouse click the BACK at the left-bottom corner and go back to the main menu.
+- Choose CREDITS by clicking DOWN twice and click ENTER.
+- You can see the scrolling credits. Click ENTER in order to go back the main menu.
 
 
 Main Scene File: Combined
