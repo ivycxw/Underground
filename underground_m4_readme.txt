@@ -54,7 +54,8 @@ UI Components
 
 4) Your menu system should be navigable with a controller or keyboard in addition to normal the mouse clicking.
 
-	- [TODO]
+	- It can be navigable with a keyboard with UP and DOWN, and ENTER can be used to choose the item.
+        - In the credits menu, ENTER can be used to return back the main menu.
 
 
 5) The credits for the game should be fully informative on all contributions.
@@ -96,4 +97,4 @@ Steps to Check:
 - [TODO]
 
 
-Main Scene File: Menu
+Main Scene File: Combined
