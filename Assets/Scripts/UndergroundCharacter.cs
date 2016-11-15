@@ -154,6 +154,7 @@ public class UndergroundCharacter : MonoBehaviour
 		{
 			m_DeadEffect.enabled = true;
 		}
+		m_Animator.SetTrigger("Died");
 		Invoke("Respawn", RespawnTime);
 	}
 
@@ -166,5 +167,6 @@ public class UndergroundCharacter : MonoBehaviour
 		{
 			m_DeadEffect.enabled = false;
 		}
+		m_Animator.SetTrigger("Respawn");
 	}
 }

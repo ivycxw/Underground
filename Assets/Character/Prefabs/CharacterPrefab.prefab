@@ -1066,7 +1066,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MaxHealth: 100
   CameraSmoothingFactor: 5
-  RespawnTime: 2
+  RespawnTime: 5
 --- !u!136 &136000010798367300
 CapsuleCollider:
   m_ObjectHideFlags: 1
