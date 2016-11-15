@@ -42,6 +42,10 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 			m_OrigGroundCheckDistance = m_GroundCheckDistance;
 		}
 
+		private void Update() {
+			Vector3 velocity = new Vector3 (m_Animator.GetFloat ("Turn") / 360f, 0, m_Animator.GetFloat ("Forward"));
+			Move (velocity, false, false);
+		}
 
 		public void Move(Vector3 move, bool crouch, bool jump)
 		{
@@ -50,7 +54,7 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 			// turn amount and forward amount required to head in the desired
 			// direction.
 			if (move.magnitude > 1f) move.Normalize();
-			move = transform.InverseTransformDirection(move);
+//			move = transform.InverseTransformDirection(move);
 			CheckGroundStatus();
 			move = Vector3.ProjectOnPlane(move, m_GroundNormal);
 			m_TurnAmount = Mathf.Atan2(move.x, move.z);
@@ -59,14 +63,14 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 			ApplyExtraTurnRotation();
 
 			// control and velocity handling is different when grounded and airborne:
-			if (m_IsGrounded)
-			{
+//			if (m_IsGrounded)
+//			{
 				HandleGroundedMovement(crouch, jump);
-			}
-			else
-			{
-				HandleAirborneMovement();
-			}
+//			}
+//			else
+//			{
+//				HandleAirborneMovement();
+//			}
 
 			ScaleCapsuleForCrouching(crouch);
 			PreventStandingInLowHeadroom();
