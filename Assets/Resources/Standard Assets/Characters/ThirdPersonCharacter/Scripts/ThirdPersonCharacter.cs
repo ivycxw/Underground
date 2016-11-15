@@ -29,6 +29,7 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 		CapsuleCollider m_Capsule;
 		bool m_Crouching;
 
+		public bool shouldTransformDirection = true;
 
 		void Start()
 		{
@@ -42,10 +43,6 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 			m_OrigGroundCheckDistance = m_GroundCheckDistance;
 		}
 
-		private void Update() {
-			Vector3 velocity = new Vector3 (m_Animator.GetFloat ("Turn") / 360f, 0, m_Animator.GetFloat ("Forward"));
-			Move (velocity, false, false);
-		}
 
 		public void Move(Vector3 move, bool crouch, bool jump)
 		{
@@ -54,7 +51,12 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 			// turn amount and forward amount required to head in the desired
 			// direction.
 			if (move.magnitude > 1f) move.Normalize();
-//			move = transform.InverseTransformDirection(move);
+
+			if (shouldTransformDirection)
+			{
+				move = transform.InverseTransformDirection (move);
+			}
+
 			CheckGroundStatus();
 			move = Vector3.ProjectOnPlane(move, m_GroundNormal);
 			m_TurnAmount = Mathf.Atan2(move.x, move.z);
@@ -63,14 +65,14 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 			ApplyExtraTurnRotation();
 
 			// control and velocity handling is different when grounded and airborne:
-//			if (m_IsGrounded)
-//			{
+			if (m_IsGrounded)
+			{
 				HandleGroundedMovement(crouch, jump);
-//			}
-//			else
-//			{
-//				HandleAirborneMovement();
-//			}
+			}
+			else
+			{
+				HandleAirborneMovement();
+			}
 
 			ScaleCapsuleForCrouching(crouch);
 			PreventStandingInLowHeadroom();
@@ -206,10 +208,10 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 		void CheckGroundStatus()
 		{
 			RaycastHit hitInfo;
-#if UNITY_EDITOR
+			#if UNITY_EDITOR
 			// helper to visualise the ground check ray in the scene view
 			Debug.DrawLine(transform.position + (Vector3.up * 0.1f), transform.position + (Vector3.up * 0.1f) + (Vector3.down * m_GroundCheckDistance));
-#endif
+			#endif
 			// 0.1f is a small offset to start the ray from inside the character
 			// it is also good to note that the transform position in the sample assets is at the base of the character
 			if (Physics.Raycast(transform.position + (Vector3.up * 0.1f), Vector3.down, out hitInfo, m_GroundCheckDistance))

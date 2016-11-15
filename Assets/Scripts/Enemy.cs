@@ -13,6 +13,8 @@ public class Enemy : MonoBehaviour {
 	void Start () {
 		character = GetComponent <ThirdPersonCharacter> ();
 		anim = GetComponent <Animator> ();
+
+		character.shouldTransformDirection = false;
 	}
 	
 	// Update is called once per frame
