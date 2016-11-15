@@ -1,4 +1,14 @@
-﻿using UnityEngine;
+﻿/*
+    Team Underground
+
+    Xiaowei Chen
+    Hyun Seo Chung
+    Hui Feng
+    Sangmin Lee
+    Zachary Peterson
+*/
+
+using UnityEngine;
 using System.Collections;
 
 //Class to handle mapping of different controllers in Unity over different OS(Windows and Mac Os X primarily). As of now coding for XBox 360 controller
