@@ -1,4 +1,14 @@
-﻿#pragma strict
+﻿/*
+    Team Underground
+
+    Xiaowei Chen
+    Hyun Seo Chung
+    Hui Feng
+    Sangmin Lee
+    Zachary Peterson
+*/
+
+#pragma strict
 
 public var currentMount:Transform;
 public var speedFactor:float = 0.1;
