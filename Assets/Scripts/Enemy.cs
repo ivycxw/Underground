@@ -1,4 +1,4 @@
-﻿/*
+/*
     Team Underground
 
     Xiaowei Chen
@@ -35,7 +35,7 @@ public class Enemy : MonoBehaviour {
 		character.Move (velocity, false, false);
 	}
 
-	void TakeDamage (int damageAmount) {
+	public void TakeDamage (int damageAmount) {
 		health -= damageAmount;
 
 		if (health <= 0) {
