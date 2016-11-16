@@ -14,7 +14,7 @@ public class CoinRotator : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		mr.transform.Rotate(Vector3.up * Time.deltaTime * 50);
+		mr.transform.Rotate(Vector3.right * Time.deltaTime * 50);
 	}
 
 	void OnCollisionEnter(Collision other) {
