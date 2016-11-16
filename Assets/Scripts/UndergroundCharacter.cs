@@ -67,33 +67,39 @@ public class UndergroundCharacter : MonoBehaviour
 
 	void Update()
 	{
-		// Check input for jumping
-		if (!m_Jump)
+		if (!m_Dead)
 		{
-			m_Jump = ControlInputWrapper.GetButtonDown(ControlInputWrapper.Buttons.Y) || Input.GetButtonDown("Jump");
-		}
-
-		// Check to see if the user has requested to attack and set it in the animator
-		m_Animator.SetBool("Attacking", ControlInputWrapper.GetButton(ControlInputWrapper.Buttons.X) || Input.GetButton("Attacking"));
-
-		// If we are in the "hit" part of the Hit animation, check to see if we are colliding with anything
-		if (m_Animator.GetFloat("Hit") > 0.0f)
-		{
-			foreach (GameObject go in m_PotentialHitObjects)
+			// Check input for jumping
+			if (!m_Jump)
 			{
-				Debug.Log("Hit game object: " + go);
-				// TODO: Damage any NPCs that are hit
+				m_Jump = ControlInputWrapper.GetButtonDown(ControlInputWrapper.Buttons.Y) || Input.GetButtonDown("Jump");
 			}
-			// We've hit objects now, so clear the potentials list so that objects don't get hit multiple times in a single attack
-			m_PotentialHitObjects.Clear();
+
+			// Check to see if the user has requested to attack and set it in the animator
+			m_Animator.SetBool("Attacking", ControlInputWrapper.GetButton(ControlInputWrapper.Buttons.X) || Input.GetButton("Attacking"));
+
+			// If we are in the "hit" part of the Hit animation, check to see if we are colliding with anything
+			if (m_Animator.GetFloat("Hit") > 0.0f)
+			{
+				foreach (GameObject go in m_PotentialHitObjects)
+				{
+					Enemy e = go.GetComponent<Enemy>();
+					if (e != null)
+					{
+						e.TakeDamage(25);
+					}
+				}
+				// We've hit objects now, so clear the potentials list so that objects don't get hit multiple times in a single attack
+				m_PotentialHitObjects.Clear();
+			}
 		}
 	}
 
 	void FixedUpdate()
 	{
 		// Grab the movement axes and our movement
-		float h = Input.GetAxis("Horizontal");
-		float v = Input.GetAxis("Vertical");
+		float h = (!m_Dead) ? Input.GetAxis("Horizontal") : 0.0f;;
+		float v = (!m_Dead) ? Input.GetAxis("Vertical") : 0.0f;
 
 		// Taken from the third person user controller, calculates relative camera movement
 		if (m_CamTransform != null)
