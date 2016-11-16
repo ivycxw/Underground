@@ -7,7 +7,7 @@ public class RoomChange3 : MonoBehaviour {
 		if (KeyManager.hasKey == true) {
 			Debug.Log ("Go To Next Step");
 			KeyManager.hasKey = false;
-			other.gameObject.transform.position = new Vector3(304, 9, 61);
+			other.gameObject.transform.position = new Vector3(293, 9, 52);
 		}
 	}
 }
