@@ -13,6 +13,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityStandardAssets.Characters.ThirdPerson;
 using UnityStandardAssets.ImageEffects;
+using UnityEngine.SceneManagement;
 
 [RequireComponent(typeof(ThirdPersonCharacter))]
 [RequireComponent(typeof(Animator))]
@@ -167,12 +168,13 @@ public class UndergroundCharacter : MonoBehaviour
 	// Called after a timer to respawn the character at the last checkpoint
 	private void Respawn()
 	{
-		m_Dead = false;
-		m_Health = MaxHealth;
-		if (m_DeadEffect != null)
-		{
-			m_DeadEffect.enabled = false;
-		}
-		m_Animator.SetTrigger("Respawn");
+		SceneManager.LoadScene("Scenes/Game Level");
+//		m_Dead = false;
+//		m_Health = MaxHealth;
+//		if (m_DeadEffect != null)
+//		{
+//			m_DeadEffect.enabled = false;
+//		}
+//		m_Animator.SetTrigger("Respawn");
 	}
 }

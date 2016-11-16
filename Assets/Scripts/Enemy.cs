@@ -44,6 +44,6 @@ public class Enemy : MonoBehaviour {
 	}
 
 	void Die () {
-		// TODO
+		Destroy (gameObject);
 	}
 }
