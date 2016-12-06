@@ -5,11 +5,14 @@ public class CoinRotator : MonoBehaviour {
 
 	private MeshRenderer mr;
 	private MeshCollider mc;
+	private AudioSource source;
+	public AudioClip collectedSound;
 
 	// Use this for initialization
 	void Start () {
 		mr = GetComponent<MeshRenderer> ();
 		mc = GetComponent<MeshCollider> ();
+		source = GetComponent<AudioSource> ();
 	}
 	
 	// Update is called once per frame
@@ -21,6 +24,8 @@ public class CoinRotator : MonoBehaviour {
 		if (other.gameObject.tag == "Player") {
 			mr.enabled = false;
 			mc.enabled = false;
+			source.PlayOneShot (collectedSound);
+			PlayerItemManager.number_of_coins++;
 		}
 	}
 	

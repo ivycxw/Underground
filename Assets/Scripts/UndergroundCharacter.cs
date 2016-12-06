@@ -146,12 +146,35 @@ public class UndergroundCharacter : MonoBehaviour
 		if (!m_Dead)
 		{
 			m_Health -= DamageAmount;
+			Debug.Log ("Damaged by " + DamageAmount);
 			if (m_Health <= 0.0f)
 			{
 				Died();
 			}
 		}
 	}
+
+	// Added by Sangmin to add HP
+	public void IncreaseHP(float hp) {
+		if (!m_Dead) {
+			m_Health += hp;
+			Debug.Log ("HP is increased by " + hp);
+			if (m_Health >= MaxHealth) {
+				m_Health = MaxHealth;
+			}
+		}
+	}
+		
+	// Added by Sangmin to take HP from Particle
+	void OnParticleCollision(GameObject other) {
+		
+		Debug.Log ("Particle: " + other.tag);
+		if (other.CompareTag ("DragonParticle")) {
+			Debug.Log ("Particle: Dragon");
+			TakeDamage (1);
+		}
+	}
+		
 
 	// Called when the character dies
 	private void Died()

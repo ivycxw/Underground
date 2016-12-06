@@ -4,9 +4,9 @@ using System.Collections;
 public class RoomChange1 : MonoBehaviour {
 
 	void OnCollisionEnter(Collision other) {
-		if (KeyManager.hasKey == true) {
+		if (PlayerItemManager.hasKey == true) {
 			Debug.Log ("Go To Next Step");
-			KeyManager.hasKey = false;
+			PlayerItemManager.hasKey = false;
 			other.gameObject.transform.position = new Vector3(365, 6, 185);
 		}
 	}
