@@ -31,6 +31,7 @@ public class UndergroundCharacter : MonoBehaviour
 	private Animator m_Animator;
 	private List<GameObject> m_PotentialHitObjects;
 	private Vector3 m_CamOffset;
+	private Quaternion m_CamRotOffset;
 	private float m_Health;
 	private bool m_Dead;
 	private Grayscale m_DeadEffect;
@@ -43,6 +44,7 @@ public class UndergroundCharacter : MonoBehaviour
 		{
 			m_CamTransform = Camera.main.transform;
 			m_CamOffset = m_CamTransform.position - transform.position;
+			m_CamRotOffset = Quaternion.Inverse(transform.rotation);
 			m_DeadEffect = Camera.main.GetComponent<Grayscale>();
 			if (m_DeadEffect != null)
 			{
@@ -117,7 +119,8 @@ public class UndergroundCharacter : MonoBehaviour
 		m_Jump = false;
 
 		// Update our camera tracking
-		Vector3 targetCamPos = transform.position + m_CamOffset;
+		// Vector3 targetCamPos = transform.position + m_CamRotOffset * (transform.rotation * m_CamOffset);
+		Vector3 targetCamPos = transform.position + (m_CamRotOffset * transform.rotation) * m_CamOffset;
         m_CamTransform.position = Vector3.Lerp(m_CamTransform.position, targetCamPos, CameraSmoothingFactor * Time.deltaTime);
 		m_CamTransform.rotation = Quaternion.LookRotation(transform.position - m_CamTransform.position);
 	}
