@@ -89,7 +89,7 @@ public class UndergroundCharacter : MonoBehaviour
 					Enemy e = go.GetComponent<Enemy>();
 					if (e != null)
 					{
-						e.TakeDamage(25);
+						e.TakeDamage(50);
 					}
 				}
 				// We've hit objects now, so clear the potentials list so that objects don't get hit multiple times in a single attack
