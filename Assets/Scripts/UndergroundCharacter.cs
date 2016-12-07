@@ -14,6 +14,7 @@ using System.Collections.Generic;
 using UnityStandardAssets.Characters.ThirdPerson;
 using UnityStandardAssets.ImageEffects;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 [RequireComponent(typeof(ThirdPersonCharacter))]
 [RequireComponent(typeof(Animator))]
@@ -23,6 +24,8 @@ public class UndergroundCharacter : MonoBehaviour
 	public float CameraSmoothingFactor = 5f;
 	public float RespawnTime = 2.0f;
 
+	public Slider HealthSlider;
+
 	private ThirdPersonCharacter m_Character;
 	private Transform m_CamTransform;
 	private Vector3 m_CamForward;
@@ -31,9 +34,12 @@ public class UndergroundCharacter : MonoBehaviour
 	private Animator m_Animator;
 	private List<GameObject> m_PotentialHitObjects;
 	private Vector3 m_CamOffset;
+	private Quaternion m_CamRotOffset;
 	private float m_Health;
 	private bool m_Dead;
 	private Grayscale m_DeadEffect;
+	private Vector3 m_CurrentCheckpointPosition;
+	private Quaternion m_CurrentCheckpointRotation;
 
         
 	void Start()
@@ -43,6 +49,7 @@ public class UndergroundCharacter : MonoBehaviour
 		{
 			m_CamTransform = Camera.main.transform;
 			m_CamOffset = m_CamTransform.position - transform.position;
+			m_CamRotOffset = Quaternion.Inverse(transform.rotation);
 			m_DeadEffect = Camera.main.GetComponent<Grayscale>();
 			if (m_DeadEffect != null)
 			{
@@ -64,6 +71,9 @@ public class UndergroundCharacter : MonoBehaviour
 		// Set up the current health based on the max health
 		m_Health = MaxHealth;
 		m_Dead = false;
+
+		m_CurrentCheckpointPosition = transform.position;
+		m_CurrentCheckpointRotation = transform.rotation;
 	}
 
 	void Update()
@@ -87,11 +97,23 @@ public class UndergroundCharacter : MonoBehaviour
 					Enemy e = go.GetComponent<Enemy>();
 					if (e != null)
 					{
-						e.TakeDamage(25);
+						e.TakeDamage(50);
 					}
 				}
 				// We've hit objects now, so clear the potentials list so that objects don't get hit multiple times in a single attack
 				m_PotentialHitObjects.Clear();
+			}
+		}
+
+		if (HealthSlider != null)
+		{
+			if (!m_Dead)
+			{
+				HealthSlider.value = m_Health / MaxHealth;
+			}
+			else
+			{
+				HealthSlider.value = 0.0f;
 			}
 		}
 	}
@@ -117,7 +139,8 @@ public class UndergroundCharacter : MonoBehaviour
 		m_Jump = false;
 
 		// Update our camera tracking
-		Vector3 targetCamPos = transform.position + m_CamOffset;
+		// Vector3 targetCamPos = transform.position + m_CamRotOffset * (transform.rotation * m_CamOffset);
+		Vector3 targetCamPos = transform.position + (m_CamRotOffset * transform.rotation) * m_CamOffset;
         m_CamTransform.position = Vector3.Lerp(m_CamTransform.position, targetCamPos, CameraSmoothingFactor * Time.deltaTime);
 		m_CamTransform.rotation = Quaternion.LookRotation(transform.position - m_CamTransform.position);
 	}
@@ -184,16 +207,28 @@ public class UndergroundCharacter : MonoBehaviour
 		Invoke("Respawn", RespawnTime);
 	}
 
+	// Used to set the respawn checkpoint for the player
+	// When the player respawns, they will be set to the position and rotation of the transform used as a checkpoint
+	public void SetCheckpoint(Vector3 NewCheckpointPosition, Quaternion NewCheckpointRotation)
+	{
+		m_CurrentCheckpointPosition = NewCheckpointPosition;
+		m_CurrentCheckpointRotation = NewCheckpointRotation;
+	}
+
 	// Called after a timer to respawn the character at the last checkpoint
 	private void Respawn()
 	{
-		SceneManager.LoadScene("Scenes/Game Level");
-//		m_Dead = false;
-//		m_Health = MaxHealth;
-//		if (m_DeadEffect != null)
-//		{
-//			m_DeadEffect.enabled = false;
-//		}
-//		m_Animator.SetTrigger("Respawn");
+		m_Dead = false;
+		m_Health = MaxHealth;
+		if (m_DeadEffect != null)
+		{
+			m_DeadEffect.enabled = false;
+		}
+		m_Animator.SetTrigger("Respawn");
+		if (m_CurrentCheckpointPosition != null && m_CurrentCheckpointRotation != null)
+		{
+			transform.position = m_CurrentCheckpointPosition;
+			transform.rotation = m_CurrentCheckpointRotation;
+		}		
 	}
 }
