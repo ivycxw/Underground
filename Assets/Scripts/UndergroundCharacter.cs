@@ -167,14 +167,10 @@ public class UndergroundCharacter : MonoBehaviour
 		
 	// Added by Sangmin to take HP from Particle
 	void OnParticleCollision(GameObject other) {
-		
-		Debug.Log ("Particle: " + other.tag);
 		if (other.CompareTag ("DragonParticle")) {
-			Debug.Log ("Particle: Dragon");
 			TakeDamage (1);
 		}
 	}
-		
 
 	// Called when the character dies
 	private void Died()

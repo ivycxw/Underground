@@ -4,6 +4,10 @@ using System.Collections;
 public class KeyManager : MonoBehaviour {
 	private AudioSource source;
 	public AudioClip collectedSound;
+	public ParticleSystem particle;
+	public ParticleSystem destinationParticle;
+	public ParticleSystem dragonParticle;
+	public MeshRenderer directionText;
 	public GameObject flag;
 	public GameObject obelisk;
 
@@ -22,6 +26,10 @@ public class KeyManager : MonoBehaviour {
 			obelisk.GetComponent<MeshRenderer> ().enabled = false;
 			flag.GetComponent<MeshCollider> ().enabled = false;
 			obelisk.GetComponent<MeshCollider> ().enabled = false;
+			particle.Stop ();
+			destinationParticle.Play ();
+			dragonParticle.Play ();
+			directionText.enabled = true;
 			source.PlayOneShot (collectedSound);
 		}
 	}
@@ -34,6 +42,10 @@ public class KeyManager : MonoBehaviour {
 			obelisk.GetComponent<MeshRenderer> ().enabled = false;
 			flag.GetComponent<MeshCollider> ().enabled = false;
 			obelisk.GetComponent<MeshCollider> ().enabled = false;
+			particle.Stop ();
+			destinationParticle.Play ();
+			dragonParticle.Play ();
+			directionText.enabled = true;
 			source.PlayOneShot (collectedSound);
 		}
 	}
