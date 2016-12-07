@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
 public class RoomChange2 : MonoBehaviour {
@@ -16,6 +16,11 @@ public class RoomChange2 : MonoBehaviour {
 			PlayerItemManager.hasKey = false;
 			source.PlayOneShot (movingSound);
 			other.gameObject.transform.position = new Vector3(257, 9, 180);
+			UndergroundCharacter character = other.gameObject.GetComponent<UndergroundCharacter>();
+			if (character != null)
+			{
+				character.SetCheckpoint(new Vector3(257, 9, 180), Quaternion.Euler(0.0f, -90.0f, 0.0f));
+			}
 		}
 	}
 }

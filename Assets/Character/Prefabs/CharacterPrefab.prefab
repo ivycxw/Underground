@@ -1061,8 +1061,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce7a80d520cacc042b5fe14f373d8173, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_MovingTurnSpeed: 500
-  m_StationaryTurnSpeed: 45
+  m_MovingTurnSpeed: 200
+  m_StationaryTurnSpeed: 150
   m_JumpPower: 6
   m_GravityMultiplier: 2
   m_RunCycleLegOffset: 0.2
@@ -1084,6 +1084,7 @@ MonoBehaviour:
   MaxHealth: 100
   CameraSmoothingFactor: 5
   RespawnTime: 5
+  HealthSlider: {fileID: 0}
 --- !u!114 &114000013459672664
 MonoBehaviour:
   m_ObjectHideFlags: 1

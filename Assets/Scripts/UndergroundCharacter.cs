@@ -38,6 +38,8 @@ public class UndergroundCharacter : MonoBehaviour
 	private float m_Health;
 	private bool m_Dead;
 	private Grayscale m_DeadEffect;
+	private Vector3 m_CurrentCheckpointPosition;
+	private Quaternion m_CurrentCheckpointRotation;
 
         
 	void Start()
@@ -69,6 +71,9 @@ public class UndergroundCharacter : MonoBehaviour
 		// Set up the current health based on the max health
 		m_Health = MaxHealth;
 		m_Dead = false;
+
+		m_CurrentCheckpointPosition = transform.position;
+		m_CurrentCheckpointRotation = transform.rotation;
 	}
 
 	void Update()
@@ -202,16 +207,28 @@ public class UndergroundCharacter : MonoBehaviour
 		Invoke("Respawn", RespawnTime);
 	}
 
+	// Used to set the respawn checkpoint for the player
+	// When the player respawns, they will be set to the position and rotation of the transform used as a checkpoint
+	public void SetCheckpoint(Vector3 NewCheckpointPosition, Quaternion NewCheckpointRotation)
+	{
+		m_CurrentCheckpointPosition = NewCheckpointPosition;
+		m_CurrentCheckpointRotation = NewCheckpointRotation;
+	}
+
 	// Called after a timer to respawn the character at the last checkpoint
 	private void Respawn()
 	{
-		SceneManager.LoadScene("Scenes/Game Level");
-//		m_Dead = false;
-//		m_Health = MaxHealth;
-//		if (m_DeadEffect != null)
-//		{
-//			m_DeadEffect.enabled = false;
-//		}
-//		m_Animator.SetTrigger("Respawn");
+		m_Dead = false;
+		m_Health = MaxHealth;
+		if (m_DeadEffect != null)
+		{
+			m_DeadEffect.enabled = false;
+		}
+		m_Animator.SetTrigger("Respawn");
+		if (m_CurrentCheckpointPosition != null && m_CurrentCheckpointRotation != null)
+		{
+			transform.position = m_CurrentCheckpointPosition;
+			transform.rotation = m_CurrentCheckpointRotation;
+		}		
 	}
 }
