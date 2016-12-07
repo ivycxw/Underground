@@ -27,7 +27,7 @@ public class KeyManager2 : MonoBehaviour {
 			flag.GetComponent<MeshCollider> ().enabled = false;
 			obelisk.GetComponent<MeshCollider> ().enabled = false;
 			particle.Stop ();
-			if (PlayerItemManager.r2_num_keys == 2) {
+			if (PlayerItemManager.r2_num_keys >= 2) {
 				directionText2.enabled = true;
 				destinationParticle1.Play ();
 				destinationParticle2.Play ();
@@ -47,7 +47,7 @@ public class KeyManager2 : MonoBehaviour {
 			flag.GetComponent<MeshCollider> ().enabled = false;
 			obelisk.GetComponent<MeshCollider> ().enabled = false;
 			particle.Stop ();
-			if (PlayerItemManager.r2_num_keys == 2) {
+			if (PlayerItemManager.r2_num_keys >= 2) {
 				directionText2.enabled = true;
 				destinationParticle1.Play ();
 				destinationParticle2.Play ();

@@ -6,10 +6,8 @@ public class SmallHPRotator : MonoBehaviour {
 	private MeshRenderer mr;
 	private MeshCollider mc;
 	private AudioSource source;
-	private float HP_AMOUNT = 25.0f;
+	private float HP_AMOUNT = 15.0f;
 	public AudioClip collectedSound;
-
-
 
 	// Use this for initialization
 	void Start () {
