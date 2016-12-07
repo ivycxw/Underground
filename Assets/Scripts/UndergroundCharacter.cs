@@ -14,6 +14,7 @@ using System.Collections.Generic;
 using UnityStandardAssets.Characters.ThirdPerson;
 using UnityStandardAssets.ImageEffects;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 [RequireComponent(typeof(ThirdPersonCharacter))]
 [RequireComponent(typeof(Animator))]
@@ -22,6 +23,8 @@ public class UndergroundCharacter : MonoBehaviour
 	public float MaxHealth = 100.0f;
 	public float CameraSmoothingFactor = 5f;
 	public float RespawnTime = 2.0f;
+
+	public Slider HealthSlider;
 
 	private ThirdPersonCharacter m_Character;
 	private Transform m_CamTransform;
@@ -94,6 +97,18 @@ public class UndergroundCharacter : MonoBehaviour
 				}
 				// We've hit objects now, so clear the potentials list so that objects don't get hit multiple times in a single attack
 				m_PotentialHitObjects.Clear();
+			}
+		}
+
+		if (HealthSlider != null)
+		{
+			if (!m_Dead)
+			{
+				HealthSlider.value = m_Health / MaxHealth;
+			}
+			else
+			{
+				HealthSlider.value = 0.0f;
 			}
 		}
 	}
