@@ -114,11 +114,14 @@ public class UndergroundCharacter : MonoBehaviour
 			{
 				foreach (GameObject go in m_PotentialHitObjects)
 				{
-					Enemy e = go.GetComponent<Enemy>();
-					if (e != null)
+					if (go != null)
 					{
-						e.TakeDamage(50);
-						m_PlayerAudioSource.PlayOneShot(DamageSound);
+						Enemy e = go.GetComponent<Enemy>();
+						if (e != null)
+						{
+							e.TakeDamage(50);
+							m_PlayerAudioSource.PlayOneShot(DamageSound);
+						}
 					}
 				}
 				// We've hit objects now, so clear the potentials list so that objects don't get hit multiple times in a single attack
