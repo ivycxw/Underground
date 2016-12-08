@@ -34,7 +34,10 @@ MonoBehaviour:
       repeatuntil=&quot;running&quot; name=&quot;sequencer&quot; debugbreak=&quot;False&quot;&gt;&lt;action
       repeatuntil=&quot;&quot; priority=&quot;&quot; parametervalues=&quot;&quot;
       parameters=&quot;&quot; namespace=&quot;(global)&quot; name=&quot;attack&quot;
-      debugbreak=&quot;False&quot; classname=&quot;HunterAttack&quot; /&gt;&lt;timer
+      debugbreak=&quot;False&quot; classname=&quot;HunterAttack&quot; /&gt;&lt;audio
+      waituntildone=&quot;False&quot; repeatuntil=&quot;&quot; priority=&quot;&quot;
+      name=&quot;audio&quot; forcestoponexit=&quot;False&quot; delay=&quot;0&quot;
+      debugbreak=&quot;False&quot; audiosource=&quot;EnemyAttack&quot; /&gt;&lt;timer
       waitforsec=&quot;1&quot; returnvalue=&quot;success&quot; priority=&quot;&quot;
       name=&quot;delay&quot; debugbreak=&quot;False&quot; /&gt;&lt;/sequencer&gt;&lt;/parallel&gt;&lt;/constraint&gt;&lt;constraint
       repeatuntil=&quot;&quot; priority=&quot;&quot; name=&quot;not hunter&quot; debugbreak=&quot;False&quot;
@@ -47,7 +50,10 @@ MonoBehaviour:
       repeatuntil=&quot;running&quot; name=&quot;attack sequence&quot; debugbreak=&quot;False&quot;&gt;&lt;action
       repeatuntil=&quot;&quot; priority=&quot;&quot; parametervalues=&quot;&quot;
       parameters=&quot;&quot; namespace=&quot;(global)&quot; name=&quot;attack&quot;
-      debugbreak=&quot;False&quot; classname=&quot;EnemyAttack&quot; /&gt;&lt;timer
+      debugbreak=&quot;False&quot; classname=&quot;EnemyAttack&quot; /&gt;&lt;audio
+      waituntildone=&quot;False&quot; repeatuntil=&quot;&quot; priority=&quot;&quot;
+      name=&quot;audio&quot; forcestoponexit=&quot;False&quot; delay=&quot;0&quot;
+      debugbreak=&quot;False&quot; audiosource=&quot;EnemyAttack&quot; /&gt;&lt;timer
       waitforsec=&quot;1&quot; returnvalue=&quot;success&quot; priority=&quot;&quot;
       name=&quot;delay&quot; debugbreak=&quot;False&quot; /&gt;&lt;/sequencer&gt;&lt;/parallel&gt;&lt;/constraint&gt;&lt;/selector&gt;&lt;/constraint&gt;&lt;constraint
       repeatuntil=&quot;&quot; priority=&quot;&quot; name=&quot;player not detected&quot;
