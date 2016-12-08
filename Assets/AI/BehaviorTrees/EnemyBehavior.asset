@@ -126,7 +126,7 @@ MonoBehaviour:
       movetargetvariable=&quot;moveTarget&quot; debugbreak=&quot;False&quot;&gt;&lt;action
       repeatuntil=&quot;&quot; parametervalues=&quot;&quot; parameters=&quot;&quot;
       namespace=&quot;(global)&quot; name=&quot;turn&quot; debugbreak=&quot;False&quot;
-      classname=&quot;&quot; /&gt;&lt;/waypointpatrol&gt;&lt;/constraint&gt;&lt;/selector&gt;&lt;/constraint&gt;&lt;constraint
+      classname=&quot;EnemyAttack&quot; /&gt;&lt;/waypointpatrol&gt;&lt;/constraint&gt;&lt;/selector&gt;&lt;/constraint&gt;&lt;constraint
       repeatuntil=&quot;&quot; priority=&quot;&quot; name=&quot;room 2&quot; debugbreak=&quot;False&quot;
       constraint=&quot;room == 2&quot;&gt;&lt;selector usepriorities=&quot;False&quot;
       repeatuntil=&quot;&quot; name=&quot;patrol&quot; debugbreak=&quot;False&quot;&gt;&lt;constraint
@@ -157,6 +157,97 @@ MonoBehaviour:
       repeatuntil=&quot;&quot; priority=&quot;&quot; name=&quot;enemy 4&quot; debugbreak=&quot;False&quot;
       constraint=&quot;enemyNumber == 4&quot;&gt;&lt;waypointpatrol waypointsetvariable=&quot;&amp;quot;Patrol
       Route 11&amp;quot;&quot; waypointactiontype=&quot;patrol&quot; traversetype=&quot;pingpong&quot;
+      traverseorder=&quot;forward&quot; repeatuntil=&quot;&quot; pathtargetvariable=&quot;&quot;
+      name=&quot;waypointpatrol&quot; movetargetvariable=&quot;moveTarget&quot; debugbreak=&quot;False&quot;&gt;&lt;move
+      turnspeed=&quot;&quot; repeatuntil=&quot;&quot; name=&quot;move&quot; movetarget=&quot;moveTarget&quot;
+      movespeed=&quot;0.8&quot; facetarget=&quot;&quot; debugbreak=&quot;False&quot;
+      closeenoughdistance=&quot;&quot; closeenoughangle=&quot;&quot; /&gt;&lt;/waypointpatrol&gt;&lt;/constraint&gt;&lt;/selector&gt;&lt;/constraint&gt;&lt;constraint
+      repeatuntil=&quot;&quot; priority=&quot;&quot; name=&quot;room 3&quot; debugbreak=&quot;False&quot;
+      constraint=&quot;room == 3&quot;&gt;&lt;selector usepriorities=&quot;False&quot;
+      repeatuntil=&quot;&quot; name=&quot;patrol&quot; debugbreak=&quot;False&quot;&gt;&lt;constraint
+      repeatuntil=&quot;&quot; priority=&quot;&quot; name=&quot;enemy 1&quot; debugbreak=&quot;False&quot;
+      constraint=&quot;enemyNumber == 1&quot;&gt;&lt;waypointpatrol waypointsetvariable=&quot;&amp;quot;Patrol
+      Route 12&amp;quot;&quot; waypointactiontype=&quot;patrol&quot; traversetype=&quot;pingpong&quot;
+      traverseorder=&quot;forward&quot; repeatuntil=&quot;&quot; pathtargetvariable=&quot;&quot;
+      name=&quot;waypointpatrol&quot; movetargetvariable=&quot;moveTarget&quot; debugbreak=&quot;False&quot;&gt;&lt;move
+      turnspeed=&quot;&quot; repeatuntil=&quot;&quot; name=&quot;move&quot; movetarget=&quot;moveTarget&quot;
+      movespeed=&quot;0.8&quot; facetarget=&quot;&quot; debugbreak=&quot;False&quot;
+      closeenoughdistance=&quot;&quot; closeenoughangle=&quot;&quot; /&gt;&lt;/waypointpatrol&gt;&lt;/constraint&gt;&lt;constraint
+      repeatuntil=&quot;&quot; priority=&quot;&quot; name=&quot;enemy 2&quot; debugbreak=&quot;False&quot;
+      constraint=&quot;enemyNumber == 2&quot;&gt;&lt;waypointpatrol waypointsetvariable=&quot;&amp;quot;Patrol
+      Route 13&amp;quot;&quot; waypointactiontype=&quot;patrol&quot; traversetype=&quot;pingpong&quot;
+      traverseorder=&quot;forward&quot; repeatuntil=&quot;&quot; pathtargetvariable=&quot;&quot;
+      name=&quot;waypointpatrol&quot; movetargetvariable=&quot;moveTarget&quot; debugbreak=&quot;False&quot;&gt;&lt;move
+      turnspeed=&quot;&quot; repeatuntil=&quot;&quot; name=&quot;move&quot; movetarget=&quot;moveTarget&quot;
+      movespeed=&quot;0.8&quot; facetarget=&quot;&quot; debugbreak=&quot;False&quot;
+      closeenoughdistance=&quot;&quot; closeenoughangle=&quot;&quot; /&gt;&lt;/waypointpatrol&gt;&lt;/constraint&gt;&lt;constraint
+      repeatuntil=&quot;&quot; priority=&quot;&quot; name=&quot;enemy 3&quot; debugbreak=&quot;False&quot;
+      constraint=&quot;enemyNumber == 3&quot;&gt;&lt;waypointpatrol waypointsetvariable=&quot;&amp;quot;Patrol
+      Route 14&amp;quot;&quot; waypointactiontype=&quot;patrol&quot; traversetype=&quot;pingpong&quot;
+      traverseorder=&quot;forward&quot; repeatuntil=&quot;&quot; pathtargetvariable=&quot;&quot;
+      name=&quot;waypointpatrol&quot; movetargetvariable=&quot;moveTarget&quot; debugbreak=&quot;False&quot;&gt;&lt;move
+      turnspeed=&quot;&quot; repeatuntil=&quot;&quot; name=&quot;move&quot; movetarget=&quot;moveTarget&quot;
+      movespeed=&quot;0.8&quot; facetarget=&quot;&quot; debugbreak=&quot;False&quot;
+      closeenoughdistance=&quot;&quot; closeenoughangle=&quot;&quot; /&gt;&lt;/waypointpatrol&gt;&lt;/constraint&gt;&lt;constraint
+      repeatuntil=&quot;&quot; priority=&quot;&quot; name=&quot;enemy 4&quot; debugbreak=&quot;False&quot;
+      constraint=&quot;enemyNumber == 4&quot;&gt;&lt;waypointpatrol waypointsetvariable=&quot;&amp;quot;Patrol
+      Route 15&amp;quot;&quot; waypointactiontype=&quot;patrol&quot; traversetype=&quot;pingpong&quot;
+      traverseorder=&quot;forward&quot; repeatuntil=&quot;&quot; pathtargetvariable=&quot;&quot;
+      name=&quot;waypointpatrol&quot; movetargetvariable=&quot;moveTarget&quot; debugbreak=&quot;False&quot;&gt;&lt;move
+      turnspeed=&quot;&quot; repeatuntil=&quot;&quot; name=&quot;move&quot; movetarget=&quot;moveTarget&quot;
+      movespeed=&quot;0.8&quot; facetarget=&quot;&quot; debugbreak=&quot;False&quot;
+      closeenoughdistance=&quot;&quot; closeenoughangle=&quot;&quot; /&gt;&lt;/waypointpatrol&gt;&lt;/constraint&gt;&lt;constraint
+      repeatuntil=&quot;&quot; priority=&quot;&quot; name=&quot;enemy 5&quot; debugbreak=&quot;False&quot;
+      constraint=&quot;enemyNumber == 5&quot;&gt;&lt;waypointpatrol waypointsetvariable=&quot;&amp;quot;Patrol
+      Route 16&amp;quot;&quot; waypointactiontype=&quot;patrol&quot; traversetype=&quot;pingpong&quot;
+      traverseorder=&quot;forward&quot; repeatuntil=&quot;&quot; pathtargetvariable=&quot;&quot;
+      name=&quot;waypointpatrol&quot; movetargetvariable=&quot;moveTarget&quot; debugbreak=&quot;False&quot;&gt;&lt;move
+      turnspeed=&quot;&quot; repeatuntil=&quot;&quot; name=&quot;move&quot; movetarget=&quot;moveTarget&quot;
+      movespeed=&quot;0.8&quot; facetarget=&quot;&quot; debugbreak=&quot;False&quot;
+      closeenoughdistance=&quot;&quot; closeenoughangle=&quot;&quot; /&gt;&lt;/waypointpatrol&gt;&lt;/constraint&gt;&lt;constraint
+      repeatuntil=&quot;&quot; priority=&quot;&quot; name=&quot;enemy 6&quot; debugbreak=&quot;False&quot;
+      constraint=&quot;enemyNumber == 6&quot;&gt;&lt;waypointpatrol waypointsetvariable=&quot;&amp;quot;Patrol
+      Route 17&amp;quot;&quot; waypointactiontype=&quot;patrol&quot; traversetype=&quot;pingpong&quot;
+      traverseorder=&quot;forward&quot; repeatuntil=&quot;&quot; pathtargetvariable=&quot;&quot;
+      name=&quot;waypointpatrol&quot; movetargetvariable=&quot;moveTarget&quot; debugbreak=&quot;False&quot;&gt;&lt;move
+      turnspeed=&quot;&quot; repeatuntil=&quot;&quot; name=&quot;move&quot; movetarget=&quot;moveTarget&quot;
+      movespeed=&quot;0.8&quot; facetarget=&quot;&quot; debugbreak=&quot;False&quot;
+      closeenoughdistance=&quot;&quot; closeenoughangle=&quot;&quot; /&gt;&lt;/waypointpatrol&gt;&lt;/constraint&gt;&lt;constraint
+      repeatuntil=&quot;&quot; priority=&quot;&quot; name=&quot;enemy 7&quot; debugbreak=&quot;False&quot;
+      constraint=&quot;enemyNumber == 7&quot;&gt;&lt;waypointpatrol waypointsetvariable=&quot;&amp;quot;Patrol
+      Route 18&amp;quot;&quot; waypointactiontype=&quot;patrol&quot; traversetype=&quot;pingpong&quot;
+      traverseorder=&quot;forward&quot; repeatuntil=&quot;&quot; pathtargetvariable=&quot;&quot;
+      name=&quot;waypointpatrol&quot; movetargetvariable=&quot;moveTarget&quot; debugbreak=&quot;False&quot;&gt;&lt;move
+      turnspeed=&quot;&quot; repeatuntil=&quot;&quot; name=&quot;move&quot; movetarget=&quot;moveTarget&quot;
+      movespeed=&quot;0.8&quot; facetarget=&quot;&quot; debugbreak=&quot;False&quot;
+      closeenoughdistance=&quot;&quot; closeenoughangle=&quot;&quot; /&gt;&lt;/waypointpatrol&gt;&lt;/constraint&gt;&lt;constraint
+      repeatuntil=&quot;&quot; priority=&quot;&quot; name=&quot;enemy 8&quot; debugbreak=&quot;False&quot;
+      constraint=&quot;enemyNumber == 8&quot;&gt;&lt;waypointpatrol waypointsetvariable=&quot;&amp;quot;Patrol
+      Route 19&amp;quot;&quot; waypointactiontype=&quot;patrol&quot; traversetype=&quot;pingpong&quot;
+      traverseorder=&quot;forward&quot; repeatuntil=&quot;&quot; pathtargetvariable=&quot;&quot;
+      name=&quot;waypointpatrol&quot; movetargetvariable=&quot;moveTarget&quot; debugbreak=&quot;False&quot;&gt;&lt;move
+      turnspeed=&quot;&quot; repeatuntil=&quot;&quot; name=&quot;move&quot; movetarget=&quot;moveTarget&quot;
+      movespeed=&quot;0.8&quot; facetarget=&quot;&quot; debugbreak=&quot;False&quot;
+      closeenoughdistance=&quot;&quot; closeenoughangle=&quot;&quot; /&gt;&lt;/waypointpatrol&gt;&lt;/constraint&gt;&lt;constraint
+      repeatuntil=&quot;&quot; priority=&quot;&quot; name=&quot;enemy 9&quot; debugbreak=&quot;False&quot;
+      constraint=&quot;enemyNumber == 9&quot;&gt;&lt;waypointpatrol waypointsetvariable=&quot;&amp;quot;Patrol
+      Route 20&amp;quot;&quot; waypointactiontype=&quot;patrol&quot; traversetype=&quot;pingpong&quot;
+      traverseorder=&quot;forward&quot; repeatuntil=&quot;&quot; pathtargetvariable=&quot;&quot;
+      name=&quot;waypointpatrol&quot; movetargetvariable=&quot;moveTarget&quot; debugbreak=&quot;False&quot;&gt;&lt;move
+      turnspeed=&quot;&quot; repeatuntil=&quot;&quot; name=&quot;move&quot; movetarget=&quot;moveTarget&quot;
+      movespeed=&quot;0.8&quot; facetarget=&quot;&quot; debugbreak=&quot;False&quot;
+      closeenoughdistance=&quot;&quot; closeenoughangle=&quot;&quot; /&gt;&lt;/waypointpatrol&gt;&lt;/constraint&gt;&lt;constraint
+      repeatuntil=&quot;&quot; priority=&quot;&quot; name=&quot;enemy 10&quot; debugbreak=&quot;False&quot;
+      constraint=&quot;enemyNumber == 10&quot;&gt;&lt;waypointpatrol waypointsetvariable=&quot;&amp;quot;Patrol
+      Route 21&amp;quot;&quot; waypointactiontype=&quot;patrol&quot; traversetype=&quot;pingpong&quot;
+      traverseorder=&quot;forward&quot; repeatuntil=&quot;&quot; pathtargetvariable=&quot;&quot;
+      name=&quot;waypointpatrol&quot; movetargetvariable=&quot;moveTarget&quot; debugbreak=&quot;False&quot;&gt;&lt;move
+      turnspeed=&quot;&quot; repeatuntil=&quot;&quot; name=&quot;move&quot; movetarget=&quot;moveTarget&quot;
+      movespeed=&quot;0.8&quot; facetarget=&quot;&quot; debugbreak=&quot;False&quot;
+      closeenoughdistance=&quot;&quot; closeenoughangle=&quot;&quot; /&gt;&lt;/waypointpatrol&gt;&lt;/constraint&gt;&lt;constraint
+      repeatuntil=&quot;&quot; priority=&quot;&quot; name=&quot;enemy 11&quot; debugbreak=&quot;False&quot;
+      constraint=&quot;enemyNumber == 11&quot;&gt;&lt;waypointpatrol waypointsetvariable=&quot;&amp;quot;Patrol
+      Route 22&amp;quot;&quot; waypointactiontype=&quot;patrol&quot; traversetype=&quot;pingpong&quot;
       traverseorder=&quot;forward&quot; repeatuntil=&quot;&quot; pathtargetvariable=&quot;&quot;
       name=&quot;waypointpatrol&quot; movetargetvariable=&quot;moveTarget&quot; debugbreak=&quot;False&quot;&gt;&lt;move
       turnspeed=&quot;&quot; repeatuntil=&quot;&quot; name=&quot;move&quot; movetarget=&quot;moveTarget&quot;
