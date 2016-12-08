@@ -8,6 +8,9 @@ TagManager:
   - Arrow
   - Enemy
   - Item
+  - Enemy-Hunter
+  - Enemy-Knight
+  - Enemy-Swords
   layers:
   - Default
   - TransparentFX
