@@ -47,11 +47,13 @@ public class Enemy : MonoBehaviour {
 		audioSource.Play ();
 
 		if (health <= 0) {
-			Die ();
+			StartCoroutine(Die());
 		}
 	}
 
-	void Die () {
+	IEnumerator Die () {
+		anim.SetBool ("Dead", true);
+		yield return new WaitForSeconds(1);
 		Destroy (gameObject);
 	}
 }
