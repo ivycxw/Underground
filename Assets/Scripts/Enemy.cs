@@ -16,8 +16,12 @@ using UnityStandardAssets.Characters.ThirdPerson;
 [RequireComponent(typeof (Animator))]
 public class Enemy : MonoBehaviour {
 
+	public AudioClip hurtAudio;
+	public AudioClip attackAudio;
+
 	private ThirdPersonCharacter character;
 	private Animator anim;
+	private AudioSource audioSource;
 
 	private int health = 100;
 
@@ -25,6 +29,7 @@ public class Enemy : MonoBehaviour {
 	void Start () {
 		character = GetComponent <ThirdPersonCharacter> ();
 		anim = GetComponent <Animator> ();
+		audioSource = GetComponent <AudioSource> ();
 
 		character.shouldTransformDirection = false;
 	}
@@ -38,12 +43,17 @@ public class Enemy : MonoBehaviour {
 	public void TakeDamage (int damageAmount) {
 		health -= damageAmount;
 
+		audioSource.clip = hurtAudio;
+		audioSource.Play ();
+
 		if (health <= 0) {
-			Die ();
+			StartCoroutine(Die());
 		}
 	}
 
-	void Die () {
+	IEnumerator Die () {
+		anim.SetBool ("Dead", true);
+		yield return new WaitForSeconds(1);
 		Destroy (gameObject);
 	}
 }

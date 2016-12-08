@@ -5,6 +5,7 @@ public class KeyManager4 : MonoBehaviour {
 	private AudioSource source;
 	public AudioClip collectedSound;
 	public ParticleSystem particle;
+	public ParticleSystem destinationParticle;
 	public GameObject flag;
 	public GameObject obelisk;
 
@@ -23,6 +24,7 @@ public class KeyManager4 : MonoBehaviour {
 			flag.GetComponent<MeshCollider> ().enabled = false;
 			obelisk.GetComponent<MeshCollider> ().enabled = false;
 			particle.Stop ();
+			destinationParticle.Play ();
 			source.PlayOneShot (collectedSound);
 		}
 	}
@@ -30,12 +32,13 @@ public class KeyManager4 : MonoBehaviour {
 	void OnCollisionEnter(Collision other) {
 		Debug.Log ("Collsion: " + other.gameObject.tag);
 		if (other.gameObject.tag == "Player") {
-			PlayerItemManager.r3_num_keys += 1;
+			PlayerItemManager.r4_num_keys += 1;
 			flag.GetComponent<MeshRenderer> ().enabled = false;
 			obelisk.GetComponent<MeshRenderer> ().enabled = false;
 			flag.GetComponent<MeshCollider> ().enabled = false;
 			obelisk.GetComponent<MeshCollider> ().enabled = false;
 			particle.Stop ();
+			destinationParticle.Play ();
 			source.PlayOneShot (collectedSound);
 		}
 	}
