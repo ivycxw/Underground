@@ -74,6 +74,7 @@ public class UndergroundCharacter : MonoBehaviour
 
 		m_CurrentCheckpointPosition = transform.position;
 		m_CurrentCheckpointRotation = transform.rotation;
+		SetCheckpoint(new Vector3(257, 9, 180), Quaternion.Euler(0.0f, -90.0f, 0.0f));
 	}
 
 	void Update()
