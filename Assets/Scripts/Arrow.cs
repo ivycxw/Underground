@@ -37,7 +37,7 @@ public class Arrow : MonoBehaviour {
 		UndergroundCharacter character = collidedObject.GetComponent <UndergroundCharacter> ();
 
 		if (character != null) {
-			character.TakeDamage (5);
+			character.TakeDamage (20);
 		}
 	}
 }
