@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - DragonParticle
+  - Arrow
   layers:
   - Default
   - TransparentFX

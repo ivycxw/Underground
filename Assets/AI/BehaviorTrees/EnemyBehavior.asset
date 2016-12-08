@@ -23,18 +23,33 @@ MonoBehaviour:
       /&gt;&lt;selector usepriorities=&quot;False&quot; repeatuntil=&quot;&quot; name=&quot;selector&quot;
       debugbreak=&quot;False&quot;&gt;&lt;constraint repeatuntil=&quot;&quot; priority=&quot;&quot;
       name=&quot;player detected&quot; debugbreak=&quot;False&quot; constraint=&quot;detectedPlayer
-      != null&quot;&gt;&lt;parallel tiebreaker=&quot;fail&quot; succeed=&quot;all&quot;
-      repeatuntil=&quot;&quot; name=&quot;parallel&quot; fail=&quot;any&quot; debugbreak=&quot;False&quot;&gt;&lt;move
-      turnspeed=&quot;&quot; repeatuntil=&quot;success&quot; name=&quot;move&quot;
-      movetarget=&quot;detectedPlayer&quot; movespeed=&quot;0.9&quot; facetarget=&quot;&quot;
-      debugbreak=&quot;False&quot; closeenoughdistance=&quot;0.2&quot; closeenoughangle=&quot;20&quot;
-      /&gt;&lt;sequencer usepriorities=&quot;False&quot; repeatuntil=&quot;running&quot;
-      name=&quot;attack sequence&quot; debugbreak=&quot;False&quot;&gt;&lt;action
+      != null&quot;&gt;&lt;selector usepriorities=&quot;False&quot; repeatuntil=&quot;&quot;
+      name=&quot;selector&quot; debugbreak=&quot;False&quot;&gt;&lt;constraint repeatuntil=&quot;&quot;
+      priority=&quot;&quot; name=&quot;hunter&quot; debugbreak=&quot;False&quot; constraint=&quot;isHunter&quot;&gt;&lt;parallel
+      tiebreaker=&quot;fail&quot; succeed=&quot;all&quot; repeatuntil=&quot;&quot;
+      name=&quot;parallel&quot; fail=&quot;any&quot; debugbreak=&quot;False&quot;&gt;&lt;action
+      repeatuntil=&quot;running&quot; parametervalues=&quot;&quot; parameters=&quot;&quot;
+      namespace=&quot;&quot; name=&quot;hunter turn&quot; debugbreak=&quot;False&quot;
+      classname=&quot;HunterTurn&quot; /&gt;&lt;sequencer usepriorities=&quot;False&quot;
+      repeatuntil=&quot;running&quot; name=&quot;sequencer&quot; debugbreak=&quot;False&quot;&gt;&lt;action
+      repeatuntil=&quot;&quot; priority=&quot;&quot; parametervalues=&quot;&quot;
+      parameters=&quot;&quot; namespace=&quot;(global)&quot; name=&quot;attack&quot;
+      debugbreak=&quot;False&quot; classname=&quot;HunterAttack&quot; /&gt;&lt;timer
+      waitforsec=&quot;1&quot; returnvalue=&quot;success&quot; priority=&quot;&quot;
+      name=&quot;delay&quot; debugbreak=&quot;False&quot; /&gt;&lt;/sequencer&gt;&lt;/parallel&gt;&lt;/constraint&gt;&lt;constraint
+      repeatuntil=&quot;&quot; priority=&quot;&quot; name=&quot;not hunter&quot; debugbreak=&quot;False&quot;
+      constraint=&quot;!isHunter&quot;&gt;&lt;parallel tiebreaker=&quot;fail&quot;
+      succeed=&quot;all&quot; repeatuntil=&quot;&quot; name=&quot;parallel&quot; fail=&quot;any&quot;
+      debugbreak=&quot;False&quot;&gt;&lt;move turnspeed=&quot;&quot; repeatuntil=&quot;success&quot;
+      name=&quot;move&quot; movetarget=&quot;detectedPlayer&quot; movespeed=&quot;0.9&quot;
+      facetarget=&quot;&quot; debugbreak=&quot;False&quot; closeenoughdistance=&quot;0.2&quot;
+      closeenoughangle=&quot;20&quot; /&gt;&lt;sequencer usepriorities=&quot;False&quot;
+      repeatuntil=&quot;running&quot; name=&quot;attack sequence&quot; debugbreak=&quot;False&quot;&gt;&lt;action
       repeatuntil=&quot;&quot; priority=&quot;&quot; parametervalues=&quot;&quot;
       parameters=&quot;&quot; namespace=&quot;(global)&quot; name=&quot;attack&quot;
       debugbreak=&quot;False&quot; classname=&quot;EnemyAttack&quot; /&gt;&lt;timer
       waitforsec=&quot;1&quot; returnvalue=&quot;success&quot; priority=&quot;&quot;
-      name=&quot;delay&quot; debugbreak=&quot;False&quot; /&gt;&lt;/sequencer&gt;&lt;/parallel&gt;&lt;/constraint&gt;&lt;constraint
+      name=&quot;delay&quot; debugbreak=&quot;False&quot; /&gt;&lt;/sequencer&gt;&lt;/parallel&gt;&lt;/constraint&gt;&lt;/selector&gt;&lt;/constraint&gt;&lt;constraint
       repeatuntil=&quot;&quot; priority=&quot;&quot; name=&quot;player not detected&quot;
       debugbreak=&quot;False&quot; constraint=&quot;detectedPlayer == null&quot;&gt;&lt;selector
       usepriorities=&quot;False&quot; repeatuntil=&quot;&quot; name=&quot;current
@@ -97,7 +112,15 @@ MonoBehaviour:
       name=&quot;waypointpatrol&quot; movetargetvariable=&quot;moveTarget&quot; debugbreak=&quot;False&quot;&gt;&lt;move
       turnspeed=&quot;&quot; repeatuntil=&quot;&quot; name=&quot;move&quot; movetarget=&quot;moveTarget&quot;
       movespeed=&quot;0.8&quot; facetarget=&quot;&quot; debugbreak=&quot;False&quot;
-      closeenoughdistance=&quot;&quot; closeenoughangle=&quot;&quot; /&gt;&lt;/waypointpatrol&gt;&lt;/constraint&gt;&lt;/selector&gt;&lt;/constraint&gt;&lt;constraint
+      closeenoughdistance=&quot;&quot; closeenoughangle=&quot;&quot; /&gt;&lt;/waypointpatrol&gt;&lt;/constraint&gt;&lt;constraint
+      repeatuntil=&quot;&quot; priority=&quot;&quot; name=&quot;enemy 8&quot; debugbreak=&quot;False&quot;
+      constraint=&quot;enemyNumber == 8&quot;&gt;&lt;waypointpatrol waypointsetvariable=&quot;&quot;
+      waypointactiontype=&quot;patrol&quot; traversetype=&quot;pingpong&quot; traverseorder=&quot;forward&quot;
+      repeatuntil=&quot;&quot; pathtargetvariable=&quot;&quot; name=&quot;waypointpatrol&quot;
+      movetargetvariable=&quot;moveTarget&quot; debugbreak=&quot;False&quot;&gt;&lt;action
+      repeatuntil=&quot;&quot; parametervalues=&quot;&quot; parameters=&quot;&quot;
+      namespace=&quot;(global)&quot; name=&quot;turn&quot; debugbreak=&quot;False&quot;
+      classname=&quot;&quot; /&gt;&lt;/waypointpatrol&gt;&lt;/constraint&gt;&lt;/selector&gt;&lt;/constraint&gt;&lt;constraint
       repeatuntil=&quot;&quot; priority=&quot;&quot; name=&quot;room 2&quot; debugbreak=&quot;False&quot;
       constraint=&quot;room == 2&quot;&gt;&lt;selector usepriorities=&quot;False&quot;
       repeatuntil=&quot;&quot; name=&quot;patrol&quot; debugbreak=&quot;False&quot;&gt;&lt;constraint
