@@ -29,7 +29,6 @@ public class UndergroundCharacter : MonoBehaviour
 
 	public AudioClip JumpSound;
 	public AudioClip SwordSwingSound;
-	public AudioClip SwordHitLevelSound;
 	public AudioClip HurtSound;
 	public AudioClip DieSound;
 	public AudioClip DamageSound;
@@ -120,10 +119,6 @@ public class UndergroundCharacter : MonoBehaviour
 					{
 						e.TakeDamage(50);
 						m_PlayerAudioSource.PlayOneShot(DamageSound);
-					}
-					else
-					{
-						m_PlayerAudioSource.PlayOneShot(SwordHitLevelSound);
 					}
 				}
 				// We've hit objects now, so clear the potentials list so that objects don't get hit multiple times in a single attack
@@ -260,6 +255,9 @@ public class UndergroundCharacter : MonoBehaviour
 		{
 			transform.position = m_CurrentCheckpointPosition;
 			transform.rotation = m_CurrentCheckpointRotation;
+			Vector3 targetCamPos = transform.position + (m_CamRotOffset * transform.rotation) * m_CamOffset;
+			m_CamTransform.position = transform.position + (m_CamRotOffset * transform.rotation) * m_CamOffset;
+			m_CamTransform.rotation = Quaternion.LookRotation(transform.position - m_CamTransform.position);
 		}		
 	}
 }
