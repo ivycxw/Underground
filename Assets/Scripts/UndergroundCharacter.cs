@@ -32,6 +32,10 @@ public class UndergroundCharacter : MonoBehaviour
 	public AudioClip HurtSound;
 	public AudioClip DieSound;
 	public AudioClip DamageSound;
+	public AudioClip FootstepSound;
+
+	public GameObject LeftFoot;
+	public GameObject RightFoot;
 
 	private ThirdPersonCharacter m_Character;
 	private Transform m_CamTransform;
@@ -48,6 +52,7 @@ public class UndergroundCharacter : MonoBehaviour
 	private Vector3 m_CurrentCheckpointPosition;
 	private Quaternion m_CurrentCheckpointRotation;
 	private AudioSource m_PlayerAudioSource;
+	private float m_LastFootstepValue;
 
         
 	void Start()
@@ -85,7 +90,9 @@ public class UndergroundCharacter : MonoBehaviour
 
 		m_CurrentCheckpointPosition = transform.position;
 		m_CurrentCheckpointRotation = transform.rotation;
-		//SetCheckpoint(new Vector3(257, 9, 180), Quaternion.Euler(0.0f, -90.0f, 0.0f));
+
+		// Set up initial values for footsteps
+		m_LastFootstepValue = 0.0f;
 	}
 
 	void Update()
@@ -128,6 +135,35 @@ public class UndergroundCharacter : MonoBehaviour
 				// We've hit objects now, so clear the potentials list so that objects don't get hit multiple times in a single attack
 				m_PotentialHitObjects.Clear();
 			}
+
+			// Check to see if we should play footstep effects
+			float currentFootstep = m_Animator.GetFloat("Footstep");
+			if (m_LastFootstepValue < 0 && currentFootstep > 0 || m_LastFootstepValue > 0 && currentFootstep < 0)
+			{
+				// Determine where to place the trace
+				bool isRightFoot = currentFootstep > 0;
+				Vector3 traceStart = Vector3.zero;
+				if (isRightFoot && RightFoot != null)
+				{
+					traceStart = RightFoot.transform.position;
+				}
+				else if (LeftFoot != null)
+				{
+					traceStart = LeftFoot.transform.position;
+				}
+				else
+				{
+					traceStart = transform.position + transform.up * 1.5f;
+				}
+				// Trace and see if we hit the ground
+				Ray traceRay = new Ray(traceStart, transform.up * -1.0f);
+				RaycastHit hitInfo;
+				if (Physics.Raycast(traceRay, out hitInfo))
+				{
+					m_PlayerAudioSource.PlayOneShot(FootstepSound);
+				}
+			}
+			m_LastFootstepValue = currentFootstep;
 		}
 
 		if (HealthSlider != null)

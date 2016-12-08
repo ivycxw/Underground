@@ -1162,10 +1162,12 @@ MonoBehaviour:
   HealthSlider: {fileID: 0}
   JumpSound: {fileID: 8300000, guid: 51268bcea4f2a4d9d9068da85d05b3c3, type: 3}
   SwordSwingSound: {fileID: 8300000, guid: 178bfc60d280a1f48884cb48cddc7d6d, type: 3}
-  SwordHitLevelSound: {fileID: 8300000, guid: 4bf72c2ad7b7a8a48bbe0243ebf37028, type: 3}
   HurtSound: {fileID: 8300000, guid: 6471d40926d26a440b71dcd71323e736, type: 3}
   DieSound: {fileID: 8300000, guid: fc1912962370e6948bac6f37282c78dc, type: 3}
   DamageSound: {fileID: 8300000, guid: 72c6a27c42e525942aded4bf46020597, type: 3}
+  FootstepSound: {fileID: 8300000, guid: 6e8772b49f34d402a90016ed445d8a2f, type: 3}
+  LeftFoot: {fileID: 1000012170023128}
+  RightFoot: {fileID: 1000013449115320}
 --- !u!114 &114000013459672664
 MonoBehaviour:
   m_ObjectHideFlags: 1

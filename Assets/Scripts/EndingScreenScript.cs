@@ -1,10 +1,16 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class EndingScreenScript : MonoBehaviour {
 	private AudioSource source;
 	public ParticleSystem particle;
 	public AudioClip movingSound;
+
+	public Text WinLabel;
+	public Text HealthLabel;
+	public Slider HealthSlider;
 
 	void Start () {
 		source = GetComponent<AudioSource> ();
@@ -15,7 +21,14 @@ public class EndingScreenScript : MonoBehaviour {
 			source.PlayOneShot (movingSound);
 			particle.Stop ();
 			// Ending Screen should be hooked up here
-
+			WinLabel.enabled = true;
+			HealthLabel.enabled = false;
+			HealthSlider.enabled = false;
+			Invoke("EndGame", 10.0f);
 		}
+	}
+
+	void EndGame() {
+		SceneManager.LoadScene("Scenes/Menu");
 	}
 }
