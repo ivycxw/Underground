@@ -7,14 +7,4 @@ public class PlayerItemManager : MonoBehaviour {
 	public static long r2_num_keys = 0;
 	public static long r3_num_keys = 0;
 	public static long r4_num_keys = 0;
-
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
 }

@@ -12,10 +12,8 @@ public class RoomChange3 : MonoBehaviour {
 
 	void OnCollisionEnter(Collision other) {
 		if (PlayerItemManager.r3_num_keys >= 2) {
-			Debug.Log ("Go To Next Step");
-			PlayerItemManager.hasKey = false;
 			source.PlayOneShot (movingSound);
-			PlayerItemManager.number_of_coins = 0;
+			particle.Stop ();
 			other.gameObject.transform.position = new Vector3(293, 9, 52);
 			UndergroundCharacter character = other.gameObject.GetComponent<UndergroundCharacter>();
 			if (character != null)
