@@ -26,9 +26,14 @@ public class Arrow : MonoBehaviour {
 	}
 
 	void OnCollisionEnter (Collision collision) {
-		Object.Destroy (gameObject);
-
 		GameObject collidedObject = collision.gameObject;
+
+		if (collidedObject.layer == LayerMask.NameToLayer ("Enemy")) {
+			return;
+		}
+
+		Object.Destroy (gameObject);
+		
 		UndergroundCharacter character = collidedObject.GetComponent <UndergroundCharacter> ();
 
 		if (character != null) {

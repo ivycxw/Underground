@@ -25,6 +25,7 @@ public class TurnAssist : MonoBehaviour {
 	void Update () {
 		if (shouldFace) {
 			transform.LookAt (facePosition);
+			transform.Rotate (transform.rotation * new Vector3 (0, 1, 1));
 			shouldFace = false;
 		}
 	}
