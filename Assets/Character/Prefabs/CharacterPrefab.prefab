@@ -296,6 +296,7 @@ GameObject:
   - 136: {fileID: 136000010798367300}
   - 114: {fileID: 114000010324746294}
   - 114: {fileID: 114000013370541668}
+  - 82: {fileID: 82000013176646508}
   m_Layer: 8
   m_Name: Leader_GREEN
   m_TagString: Player
@@ -1033,6 +1034,80 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.07, y: 0.03, z: 0.15}
   m_Center: {x: -0.045, y: -0.01, z: 0.02}
+--- !u!82 &82000013176646508
+AudioSource:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000012178084776}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
 --- !u!95 &95000013230676126
 Animator:
   serializedVersion: 3
@@ -1085,6 +1160,12 @@ MonoBehaviour:
   CameraSmoothingFactor: 5
   RespawnTime: 5
   HealthSlider: {fileID: 0}
+  JumpSound: {fileID: 8300000, guid: 51268bcea4f2a4d9d9068da85d05b3c3, type: 3}
+  SwordSwingSound: {fileID: 8300000, guid: 178bfc60d280a1f48884cb48cddc7d6d, type: 3}
+  SwordHitLevelSound: {fileID: 8300000, guid: 4bf72c2ad7b7a8a48bbe0243ebf37028, type: 3}
+  HurtSound: {fileID: 8300000, guid: 6471d40926d26a440b71dcd71323e736, type: 3}
+  DieSound: {fileID: 8300000, guid: fc1912962370e6948bac6f37282c78dc, type: 3}
+  DamageSound: {fileID: 8300000, guid: 72c6a27c42e525942aded4bf46020597, type: 3}
 --- !u!114 &114000013459672664
 MonoBehaviour:
   m_ObjectHideFlags: 1
