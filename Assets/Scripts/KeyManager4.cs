@@ -1,4 +1,15 @@
-﻿using UnityEngine;
+﻿/*
+    Team Underground
+
+    Xiaowei Chen
+    Hyun Seo Chung
+    Hui Feng
+    Sangmin Lee
+    Zachary Peterson
+*/
+
+
+using UnityEngine;
 using System.Collections;
 
 public class KeyManager4 : MonoBehaviour {

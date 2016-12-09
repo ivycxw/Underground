@@ -1,3 +1,14 @@
+/*
+    Team Underground
+
+    Xiaowei Chen
+    Hyun Seo Chung
+    Hui Feng
+    Sangmin Lee
+    Zachary Peterson
+*/
+
+
 using UnityEngine;
 using System.Collections;
 
