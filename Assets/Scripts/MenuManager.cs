@@ -18,7 +18,6 @@ public class MenuManager : MonoBehaviour
 {
 	public GameObject MainMenu;
 	public GameObject CreditsMenu;
-	public GameObject RoomMenu;
 
 	public GameObject Camera;
 	public Transform CameraTarget;
@@ -30,13 +29,7 @@ public class MenuManager : MonoBehaviour
 	public float PhotoScrollRate;
 
 	public Button MainMenuPlayButton;
-	public Button MainMenuMusicButton;
 	public Button MainMenuCreditsButton;
-	public Button PlayMenuRoom1Button;
-	public Button PlayMenuRoom2Button;
-	public Button PlayMenuRoom3Button;
-	public Button PlayMenuRoom4Button;
-	public Button PlayMenuBackButton;
 	public Button CreditsMenuBackButton;
 
 	public Texture[] teamMemberPhotos;
@@ -55,7 +48,6 @@ public class MenuManager : MonoBehaviour
 	private enum EMenuState
 	{
 		MainMenu,
-		PlayMenu,
 		CreditsMenu
 	};
 
@@ -74,7 +66,6 @@ public class MenuManager : MonoBehaviour
 		mMenuState = EMenuState.MainMenu;
 
 		MainMenu.GetComponent<Canvas>().enabled = true;
-		RoomMenu.GetComponent<Canvas>().enabled = false;
 		CreditsMenu.GetComponent<Canvas>().enabled = false;
 
 		photoImage = ScrollingPhoto.GetComponent<RawImage> ();
@@ -113,12 +104,6 @@ public class MenuManager : MonoBehaviour
 		switch (mMenuState)
 		{
 			case EMenuState.MainMenu:
-				break;
-			case EMenuState.PlayMenu:
-				if (ControlInputWrapper.GetButtonDown(ControlInputWrapper.Buttons.B))
-				{
-					FromRoomToMenu();
-				}
 				break;
 			case EMenuState.CreditsMenu:
 				if (ControlInputWrapper.GetButtonDown(ControlInputWrapper.Buttons.B))
@@ -162,24 +147,6 @@ public class MenuManager : MonoBehaviour
 		MainMenuPlayButton.Select();
 		MainMenu.GetComponent<Canvas>().enabled = true;
 		StopScrollingCredits();
-		mMenuState = EMenuState.MainMenu;
-	}
-
-	public void FromMenuToRoom()
-	{
-		EventSystem.current.SetSelectedGameObject(null);
-		mMenuState = EMenuState.PlayMenu;
-		MainMenu.GetComponent<Canvas>().enabled = false;
-		PlayMenuRoom1Button.Select();
-		RoomMenu.GetComponent<Canvas>().enabled = true;
-	}
-
-	public void FromRoomToMenu()
-	{
-		EventSystem.current.SetSelectedGameObject(null);
-		RoomMenu.GetComponent<Canvas>().enabled = false;
-		MainMenuPlayButton.Select();
-		MainMenu.GetComponent<Canvas>().enabled = true;
 		mMenuState = EMenuState.MainMenu;
 	}
 

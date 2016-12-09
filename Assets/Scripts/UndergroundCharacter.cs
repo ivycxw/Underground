@@ -18,6 +18,7 @@ using UnityEngine.UI;
 
 [RequireComponent(typeof(ThirdPersonCharacter))]
 [RequireComponent(typeof(Animator))]
+[RequireComponent(typeof(AudioSource))]
 public class UndergroundCharacter : MonoBehaviour
 {
 	public float MaxHealth = 100.0f;
@@ -25,6 +26,16 @@ public class UndergroundCharacter : MonoBehaviour
 	public float RespawnTime = 2.0f;
 
 	public Slider HealthSlider;
+
+	public AudioClip JumpSound;
+	public AudioClip SwordSwingSound;
+	public AudioClip HurtSound;
+	public AudioClip DieSound;
+	public AudioClip DamageSound;
+	public AudioClip FootstepSound;
+
+	public GameObject LeftFoot;
+	public GameObject RightFoot;
 
 	private ThirdPersonCharacter m_Character;
 	private Transform m_CamTransform;
@@ -40,6 +51,8 @@ public class UndergroundCharacter : MonoBehaviour
 	private Grayscale m_DeadEffect;
 	private Vector3 m_CurrentCheckpointPosition;
 	private Quaternion m_CurrentCheckpointRotation;
+	private AudioSource m_PlayerAudioSource;
+	private float m_LastFootstepValue;
 
         
 	void Start()
@@ -65,6 +78,9 @@ public class UndergroundCharacter : MonoBehaviour
 		m_Character = GetComponent<ThirdPersonCharacter>();
 		m_Animator = GetComponent<Animator>();
 
+		// Get the Audio Source component for playing character sounds
+		m_PlayerAudioSource = GetComponent<AudioSource>();
+
 		// Set up the list of objects that should potentially be hit
 		m_PotentialHitObjects = new List<GameObject>();
 
@@ -74,7 +90,9 @@ public class UndergroundCharacter : MonoBehaviour
 
 		m_CurrentCheckpointPosition = transform.position;
 		m_CurrentCheckpointRotation = transform.rotation;
-		//SetCheckpoint(new Vector3(257, 9, 180), Quaternion.Euler(0.0f, -90.0f, 0.0f));
+
+		// Set up initial values for footsteps
+		m_LastFootstepValue = 0.0f;
 	}
 
 	void Update()
@@ -85,25 +103,67 @@ public class UndergroundCharacter : MonoBehaviour
 			if (!m_Jump)
 			{
 				m_Jump = ControlInputWrapper.GetButtonDown(ControlInputWrapper.Buttons.Y) || Input.GetButtonDown("Jump");
+				if (m_Jump && !m_Animator.IsInTransition(0) && m_Animator.GetCurrentAnimatorStateInfo(0).fullPathHash == Animator.StringToHash("Base.Grounded"))
+				{
+					m_PlayerAudioSource.PlayOneShot(JumpSound);
+				}
 			}
 
 			// Check to see if the user has requested to attack and set it in the animator
-			m_Animator.SetBool("Attacking", ControlInputWrapper.GetButton(ControlInputWrapper.Buttons.X) || Input.GetButton("Attacking"));
+			bool attacking = ControlInputWrapper.GetButton(ControlInputWrapper.Buttons.X) || Input.GetButton("Attacking");
+			if (attacking && !m_Animator.IsInTransition(0) && m_Animator.GetCurrentAnimatorStateInfo(0).fullPathHash == Animator.StringToHash("Base.Grounded"))
+			{
+				m_PlayerAudioSource.PlayOneShot(SwordSwingSound);
+			}
+			m_Animator.SetBool("Attacking", attacking);
 
 			// If we are in the "hit" part of the Hit animation, check to see if we are colliding with anything
 			if (m_Animator.GetFloat("Hit") > 0.0f)
 			{
 				foreach (GameObject go in m_PotentialHitObjects)
 				{
-					Enemy e = go.GetComponent<Enemy>();
-					if (e != null)
+					if (go != null)
 					{
-						e.TakeDamage(50);
+						Enemy e = go.GetComponent<Enemy>();
+						if (e != null)
+						{
+							e.TakeDamage(50);
+							m_PlayerAudioSource.PlayOneShot(DamageSound);
+						}
 					}
 				}
 				// We've hit objects now, so clear the potentials list so that objects don't get hit multiple times in a single attack
 				m_PotentialHitObjects.Clear();
 			}
+
+			// Check to see if we should play footstep effects
+			float currentFootstep = m_Animator.GetFloat("Footstep");
+			if (m_LastFootstepValue < 0 && currentFootstep > 0 || m_LastFootstepValue > 0 && currentFootstep < 0)
+			{
+				// Determine where to place the trace
+				bool isRightFoot = currentFootstep > 0;
+				Vector3 traceStart = Vector3.zero;
+				if (isRightFoot && RightFoot != null)
+				{
+					traceStart = RightFoot.transform.position;
+				}
+				else if (LeftFoot != null)
+				{
+					traceStart = LeftFoot.transform.position;
+				}
+				else
+				{
+					traceStart = transform.position + transform.up * 1.5f;
+				}
+				// Trace and see if we hit the ground
+				Ray traceRay = new Ray(traceStart, transform.up * -1.0f);
+				RaycastHit hitInfo;
+				if (Physics.Raycast(traceRay, out hitInfo))
+				{
+					m_PlayerAudioSource.PlayOneShot(FootstepSound);
+				}
+			}
+			m_LastFootstepValue = currentFootstep;
 		}
 
 		if (HealthSlider != null)
@@ -174,6 +234,11 @@ public class UndergroundCharacter : MonoBehaviour
 			if (m_Health <= 0.0f)
 			{
 				Died();
+				m_PlayerAudioSource.PlayOneShot(DieSound);
+			}
+			else
+			{
+				m_PlayerAudioSource.PlayOneShot(HurtSound);
 			}
 		}
 	}
@@ -230,6 +295,9 @@ public class UndergroundCharacter : MonoBehaviour
 		{
 			transform.position = m_CurrentCheckpointPosition;
 			transform.rotation = m_CurrentCheckpointRotation;
+			Vector3 targetCamPos = transform.position + (m_CamRotOffset * transform.rotation) * m_CamOffset;
+			m_CamTransform.position = transform.position + (m_CamRotOffset * transform.rotation) * m_CamOffset;
+			m_CamTransform.rotation = Quaternion.LookRotation(transform.position - m_CamTransform.position);
 		}		
 	}
 }

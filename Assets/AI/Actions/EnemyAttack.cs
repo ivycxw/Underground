@@ -23,7 +23,12 @@ public class EnemyAttack : RAINAction
     {
 		if (Vector3.Distance (ai.Kinematic.Position, player.transform.position) <= 1.3f) {
 			anim.SetTrigger ("Attack");
-			player.TakeDamage (10);
+
+			if (ai.Body.CompareTag ("Enemy-Knight")) {
+				player.TakeDamage (15);
+			} else if (ai.Body.CompareTag ("Enemy-Swords")) {
+				player.TakeDamage (10);
+			}
 
 			return ActionResult.SUCCESS;
 		}
