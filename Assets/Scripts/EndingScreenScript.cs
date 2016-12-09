@@ -14,6 +14,7 @@ public class EndingScreenScript : MonoBehaviour {
 
 	void Start () {
 		source = GetComponent<AudioSource> ();
+		WinLabel.enabled = false;
 	}
 
 	void OnCollisionEnter(Collision other) {
@@ -23,9 +24,7 @@ public class EndingScreenScript : MonoBehaviour {
 				particle.Stop ();
 				// Ending Screen should be hooked up here
 				WinLabel.enabled = true;
-				HealthLabel.enabled = false;
-				HealthSlider.enabled = false;
-				Invoke ("EndGame", 10.0f);
+				Invoke("EndGame", 10.0f);
 			}
 		}
 	}
