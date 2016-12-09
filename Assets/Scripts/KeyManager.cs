@@ -30,7 +30,6 @@ public class KeyManager : MonoBehaviour {
 
 	void OnTriggerEnter(Collider other)
 	{
-		Debug.Log ("Trigger: " + other.gameObject.tag);
 		if (other.gameObject.tag == "Player") {
 			PlayerItemManager.hasKey = true;
 			flag.GetComponent<MeshRenderer> ().enabled = false;
@@ -47,7 +46,6 @@ public class KeyManager : MonoBehaviour {
 	}
 
 	void OnCollisionEnter(Collision other) {
-		Debug.Log ("Collsion: " + other.gameObject.tag);
 		if (other.gameObject.tag == "Player") {
 			PlayerItemManager.hasKey = true;
 			flag.GetComponent<MeshRenderer> ().enabled = false;
