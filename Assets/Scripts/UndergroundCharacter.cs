@@ -103,6 +103,11 @@ public class UndergroundCharacter : MonoBehaviour
 
 	void Update()
 	{
+		if (Input.GetKeyDown(KeyCode.Escape) || ControlInputWrapper.GetButtonDown(ControlInputWrapper.Buttons.Back))
+		{
+			SceneManager.LoadScene("Scenes/Menu");
+		}
+
 		if (!m_Dead)
 		{
 			// Check input for jumping
