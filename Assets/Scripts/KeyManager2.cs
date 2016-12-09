@@ -35,6 +35,7 @@ public class KeyManager2 : MonoBehaviour {
 				directionText1.enabled = true;
 			}
 			source.PlayOneShot (collectedSound);
+			other.gameObject.GetComponent<UndergroundCharacter> ().AddScore (10);
 		}
 	}
 
@@ -55,6 +56,7 @@ public class KeyManager2 : MonoBehaviour {
 				directionText1.enabled = true;
 			}
 			source.PlayOneShot (collectedSound);
+			other.gameObject.GetComponent<UndergroundCharacter> ().AddScore (10);
 		}
 	}
 

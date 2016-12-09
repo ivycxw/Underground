@@ -31,6 +31,7 @@ public class KeyManager : MonoBehaviour {
 			dragonParticle.Play ();
 			directionText.enabled = true;
 			source.PlayOneShot (collectedSound);
+			other.gameObject.GetComponent<UndergroundCharacter> ().AddScore (10);
 		}
 	}
 
@@ -47,6 +48,7 @@ public class KeyManager : MonoBehaviour {
 			dragonParticle.Play ();
 			directionText.enabled = true;
 			source.PlayOneShot (collectedSound);
+			other.gameObject.GetComponent<UndergroundCharacter> ().AddScore (10);
 		}
 	}
 		

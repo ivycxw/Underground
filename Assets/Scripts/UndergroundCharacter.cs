@@ -262,7 +262,8 @@ public class UndergroundCharacter : MonoBehaviour
 	// Added by Sangmin to take HP from Particle
 	void OnParticleCollision(GameObject other) {
 		if (other.CompareTag ("DragonParticle")) {
-			TakeDamage (1);
+			TakeDamage (5);
+			m_PlayerAudioSource.PlayOneShot(HurtSound);
 		}
 	}
 

@@ -28,6 +28,7 @@ public class KeyManager3 : MonoBehaviour {
 				destinationParticle.Play ();
 			}
 			source.PlayOneShot (collectedSound);
+			other.gameObject.GetComponent<UndergroundCharacter> ().AddScore (10);
 		}
 	}
 
@@ -44,6 +45,7 @@ public class KeyManager3 : MonoBehaviour {
 				destinationParticle.Play ();
 			} 
 			source.PlayOneShot (collectedSound);
+			other.gameObject.GetComponent<UndergroundCharacter> ().AddScore (10);
 		}
 	}
 
