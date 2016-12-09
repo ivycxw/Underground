@@ -236,7 +236,6 @@ public class UndergroundCharacter : MonoBehaviour
 		if (!m_Dead)
 		{
 			m_Health -= DamageAmount;
-			Debug.Log ("Damaged by " + DamageAmount);
 			if (m_Health <= 0.0f)
 			{
 				Died();
@@ -253,7 +252,6 @@ public class UndergroundCharacter : MonoBehaviour
 	public void IncreaseHP(float hp) {
 		if (!m_Dead) {
 			m_Health += hp;
-			Debug.Log ("HP is increased by " + hp);
 			if (m_Health >= MaxHealth) {
 				m_Health = MaxHealth;
 			}
