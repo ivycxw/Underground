@@ -6,6 +6,7 @@ public class KeyManager4 : MonoBehaviour {
 	public AudioClip collectedSound;
 	public ParticleSystem particle;
 	public ParticleSystem destinationParticle;
+	public MeshRenderer directionText;
 	public GameObject flag;
 	public GameObject obelisk;
 
@@ -25,6 +26,7 @@ public class KeyManager4 : MonoBehaviour {
 			obelisk.GetComponent<MeshCollider> ().enabled = false;
 			particle.Stop ();
 			destinationParticle.Play ();
+			directionText.enabled = true;
 			source.PlayOneShot (collectedSound);
 		}
 	}
@@ -39,6 +41,7 @@ public class KeyManager4 : MonoBehaviour {
 			obelisk.GetComponent<MeshCollider> ().enabled = false;
 			particle.Stop ();
 			destinationParticle.Play ();
+			directionText.enabled = true;
 			source.PlayOneShot (collectedSound);
 		}
 	}
