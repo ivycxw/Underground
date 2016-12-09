@@ -28,7 +28,8 @@ public class KeyManager3 : MonoBehaviour {
 			if (PlayerItemManager.r3_num_keys == 2) {
 				destinationParticle.Play ();
 			}
-			directionText.enabled = true;
+			if (directionText != null) 
+				directionText.enabled = true;
 			source.PlayOneShot (collectedSound);
 			other.gameObject.GetComponent<UndergroundCharacter> ().AddScore (10);
 		}
@@ -46,7 +47,8 @@ public class KeyManager3 : MonoBehaviour {
 			if (PlayerItemManager.r3_num_keys >= 2) {
 				destinationParticle.Play ();
 			}
-			directionText.enabled = true;
+			if (directionText != null) 
+				directionText.enabled = true;
 			source.PlayOneShot (collectedSound);
 			other.gameObject.GetComponent<UndergroundCharacter> ().AddScore (10);
 		}

@@ -98,6 +98,7 @@ public class UndergroundCharacter : MonoBehaviour
 
 		// Set the score to 0
 		m_Score = 0;
+		SetCheckpoint(new Vector3(293, 9, 52), Quaternion.Euler(0.0f, -90.0f, 0.0f));
 	}
 
 	void Update()
