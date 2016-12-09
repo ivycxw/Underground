@@ -26,6 +26,7 @@ public class UndergroundCharacter : MonoBehaviour
 	public float RespawnTime = 2.0f;
 
 	public Slider HealthSlider;
+	public Text ScoreLabel;
 
 	public AudioClip JumpSound;
 	public AudioClip SwordSwingSound;
@@ -53,6 +54,7 @@ public class UndergroundCharacter : MonoBehaviour
 	private Quaternion m_CurrentCheckpointRotation;
 	private AudioSource m_PlayerAudioSource;
 	private float m_LastFootstepValue;
+	private int m_Score;
 
         
 	void Start()
@@ -93,6 +95,9 @@ public class UndergroundCharacter : MonoBehaviour
 
 		// Set up initial values for footsteps
 		m_LastFootstepValue = 0.0f;
+
+		// Set the score to 0
+		m_Score = 0;
 	}
 
 	void Update()
@@ -299,5 +304,12 @@ public class UndergroundCharacter : MonoBehaviour
 			m_CamTransform.position = transform.position + (m_CamRotOffset * transform.rotation) * m_CamOffset;
 			m_CamTransform.rotation = Quaternion.LookRotation(transform.position - m_CamTransform.position);
 		}		
+	}
+
+	// Called to add score to the player
+	public void AddScore(int ScoreToAdd)
+	{
+		m_Score += ScoreToAdd;
+		ScoreLabel.text = "Score: " + m_Score;
 	}
 }

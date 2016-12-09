@@ -1160,6 +1160,7 @@ MonoBehaviour:
   CameraSmoothingFactor: 5
   RespawnTime: 5
   HealthSlider: {fileID: 0}
+  ScoreLabel: {fileID: 0}
   JumpSound: {fileID: 8300000, guid: 51268bcea4f2a4d9d9068da85d05b3c3, type: 3}
   SwordSwingSound: {fileID: 8300000, guid: 178bfc60d280a1f48884cb48cddc7d6d, type: 3}
   HurtSound: {fileID: 8300000, guid: 6471d40926d26a440b71dcd71323e736, type: 3}
