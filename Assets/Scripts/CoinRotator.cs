@@ -24,6 +24,7 @@ public class CoinRotator : MonoBehaviour {
 		if (other.gameObject.tag == "Player") {
 			mr.enabled = false;
 			mc.enabled = false;
+			other.gameObject.GetComponent<UndergroundCharacter> ().AddScore (5);
 			source.PlayOneShot (collectedSound);
 			PlayerItemManager.number_of_coins++;
 		}
