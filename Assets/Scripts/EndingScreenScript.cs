@@ -16,15 +16,17 @@ public class EndingScreenScript : MonoBehaviour {
 		source = GetComponent<AudioSource> ();
 	}
 
-	void Update () {
-		if (PlayerItemManager.r4_num_keys >= 1) {
-			source.PlayOneShot (movingSound);
-			particle.Stop ();
-			// Ending Screen should be hooked up here
-			WinLabel.enabled = true;
-			HealthLabel.enabled = false;
-			HealthSlider.enabled = false;
-			Invoke("EndGame", 10.0f);
+	void OnCollisionEnter(Collision other) {
+		if (other.gameObject.tag == "Player") {
+			if (PlayerItemManager.r4_num_keys >= 1) {
+				source.PlayOneShot (movingSound);
+				particle.Stop ();
+				// Ending Screen should be hooked up here
+				WinLabel.enabled = true;
+				HealthLabel.enabled = false;
+				HealthSlider.enabled = false;
+				Invoke ("EndGame", 10.0f);
+			}
 		}
 	}
 
