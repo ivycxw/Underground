@@ -19,18 +19,24 @@ public class HunterAttack : RAINAction
 {
 	private GameObject player;
 	private GameObject arrowPrefab;
+	private Animator anim;
 	private float maxHeight = 5f;
 
     public override void Start(RAIN.Core.AI ai)
     {
 		player = ai.WorkingMemory.GetItem <GameObject> ("player");
 		arrowPrefab = (GameObject) ai.WorkingMemory.GetItem ("arrow");
+		anim = ai.Body.GetComponent<Animator> ();
 
         base.Start(ai);
     }
 
     public override ActionResult Execute(RAIN.Core.AI ai)
     {
+		if (anim.GetBool ("Dead")) {
+			return ActionResult.FAILURE;
+		}
+
 		Vector3 velocity = player.GetComponent <Rigidbody> ().velocity;
 
 		GameObject arrow = (GameObject) Object.Instantiate (arrowPrefab, ai.Kinematic.Position + ai.Kinematic.Forward * 0.5f + Vector3.up * 2f, Quaternion.identity);

@@ -21,6 +21,10 @@ public class EnemyAttack : RAINAction
 
     public override ActionResult Execute(RAIN.Core.AI ai)
     {
+		if (anim.GetBool ("Dead")) {
+			return ActionResult.FAILURE;
+		}
+
 		if (Vector3.Distance (ai.Kinematic.Position, player.transform.position) <= 1.3f) {
 			anim.SetTrigger ("Attack");
 
