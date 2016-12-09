@@ -29,7 +29,6 @@ public class MenuManager : MonoBehaviour
 	public float PhotoScrollRate;
 
 	public Button MainMenuPlayButton;
-	public Button MainMenuCreditsButton;
 	public Button CreditsMenuBackButton;
 
 	public Texture[] teamMemberPhotos;
@@ -153,5 +152,10 @@ public class MenuManager : MonoBehaviour
 	public void StartGame()
 	{
 		SceneManager.LoadScene("Scenes/Game Level");
+	}
+
+	public void QuitGame()
+	{
+		Application.Quit();
 	}
 }
