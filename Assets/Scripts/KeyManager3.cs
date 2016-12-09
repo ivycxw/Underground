@@ -6,6 +6,7 @@ public class KeyManager3 : MonoBehaviour {
 	public AudioClip collectedSound;
 	public ParticleSystem particle;
 	public ParticleSystem destinationParticle;
+	public MeshRenderer directionText;
 	public GameObject flag;
 	public GameObject obelisk;
 
@@ -27,6 +28,7 @@ public class KeyManager3 : MonoBehaviour {
 			if (PlayerItemManager.r3_num_keys == 2) {
 				destinationParticle.Play ();
 			}
+			directionText.enabled = true;
 			source.PlayOneShot (collectedSound);
 			other.gameObject.GetComponent<UndergroundCharacter> ().AddScore (10);
 		}
@@ -43,7 +45,8 @@ public class KeyManager3 : MonoBehaviour {
 			particle.Stop ();
 			if (PlayerItemManager.r3_num_keys >= 2) {
 				destinationParticle.Play ();
-			} 
+			}
+			directionText.enabled = true;
 			source.PlayOneShot (collectedSound);
 			other.gameObject.GetComponent<UndergroundCharacter> ().AddScore (10);
 		}
